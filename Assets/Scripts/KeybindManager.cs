@@ -46,6 +46,7 @@ public class KeybindManager : MonoBehaviour
             if (Input.GetKeyDown(key))
             {
                 keyBindings[currentBindingKey] = key;
+                GameObject.Find(currentBindingKey + "Text").GetComponent<TextMeshProUGUI>().text=key.ToString();
                 isRebinding = false;
                 break;
 
