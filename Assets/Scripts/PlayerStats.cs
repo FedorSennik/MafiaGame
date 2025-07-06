@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int Health = 100;
-    public int HealthC = 0;
-    public void HealthChange(int _healthchange)
+    public float Health = 100;
+    private float HealthC = 0;
+    public void HealthChange(float _healthchange)
     {
         HealthC = _healthchange + Health;
         if(HealthC > 100)
