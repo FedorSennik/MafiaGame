@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 public class HotbarManager : MonoBehaviour
 {
@@ -9,22 +10,26 @@ public class HotbarManager : MonoBehaviour
 
     public int selectedSlot = 0;
 
-    public List<Item> availableItems = new List<Item>();
+    // Список дозволених тегів для предметів, які можуть потрапити в Hotbar
+    // Заповнюється в Inspector.
+    public List<string> allowedHotbarTags = new List<string>();
 
     void Start()
     {
         hotbarItems = new Item[5];
-
         UpdateHotbarUI();
+        SelectSlot(selectedSlot); 
     }
 
     void Update()
     {
+        // Обробка натискання клавіш для вибору комірок (1-5)
         HandleKeyInput();
 
-        if (Input.GetKeyDown(KeyCode.E))
+        // Додаткова логіка: використання предмета з вибраного слота
+        if (Input.GetMouseButtonDown(0)) // Натискання лівої кнопки миші для використання
         {
-            SimulateItemPickup();
+            UseSelectedItem();
         }
     }
 
@@ -57,36 +62,42 @@ public class HotbarManager : MonoBehaviour
         Debug.Log($"Вибрана комірка: {selectedSlot + 1}");
     }
 
-    public void AddItemToHotbar(Item itemToAdd)
+    public bool AddItemToHotbar(Item itemToAdd)
     {
-
-        if (selectedSlot == 0)
+        if (!allowedHotbarTags.Contains(itemToAdd.itemTag))
         {
-            if (itemToAdd.itemTag == "Weapon")
+            Debug.LogWarning($"Предмет '{itemToAdd.itemName}' з тегом '{itemToAdd.itemTag}' не може бути доданий до Hotbar'у. Тег не дозволено.");
+            return false;
+        }
+
+        if (itemToAdd.itemTag == "Weapon")
+        {
+            if (hotbarItems[0] == null)
             {
                 hotbarItems[0] = itemToAdd;
-                Debug.Log($"Предмет '{itemToAdd.itemName}' додано до Hotbar'у в комірку 1 (зброя).");
+                Debug.Log($"Предмет '{itemToAdd.itemName}' (зброя) додано до Hotbar'у в комірку 1.");
+                UpdateHotbarUI();
+                return true;
             }
             else
             {
-                Debug.Log($"Увага: Комірка 1 призначена тільки для зброї. Предмет '{itemToAdd.itemName}' не може бути доданий сюди.");
-                return;
-            }
-        }
-        else
-        {
-            if (hotbarItems[selectedSlot] == null)
-            {
-                hotbarItems[selectedSlot] = itemToAdd;
-                Debug.Log($"Предмет '{itemToAdd.itemName}' додано до Hotbar'у в комірку {selectedSlot + 1}.");
-            }
-            else
-            {
-                Debug.Log($"Комірка {selectedSlot + 1} вже зайнята предметом '{hotbarItems[selectedSlot].itemName}'.");
+                Debug.Log($"Комірка 1 зайнята '{hotbarItems[0].itemName}'. Шукаємо вільну комірку для '{itemToAdd.itemName}'.");
             }
         }
 
-        UpdateHotbarUI();
+        for (int i = 1; i < hotbarItems.Length; i++)
+        {
+            if (hotbarItems[i] == null)
+            {
+                hotbarItems[i] = itemToAdd;
+                Debug.Log($"Предмет '{itemToAdd.itemName}' додано до Hotbar'у в комірку {i + 1}.");
+                UpdateHotbarUI();
+                return true;
+            }
+        }
+
+        Debug.LogWarning($"Hotbar повний! Неможливо додати предмет '{itemToAdd.itemName}'.");
+        return false;
     }
 
     void UpdateHotbarUI()
@@ -101,22 +112,26 @@ public class HotbarManager : MonoBehaviour
             else
             {
                 hotbarSlots[i].sprite = null;
-                hotbarSlots[i].enabled = false;
+                hotbarSlots[i].enabled = false; 
             }
+            hotbarSlots[i].color = (i == selectedSlot) ? Color.yellow : Color.white;
         }
     }
 
-    void SimulateItemPickup()
+    // Приклад використання вибраного предмета
+    void UseSelectedItem()
     {
-        if (availableItems.Count == 0)
+        if (selectedSlot >= 0 && selectedSlot < hotbarItems.Length)
         {
-            Debug.LogWarning("Немає доступних предметів для підбору в availableItems List!");
-            return;
+            Item itemToUse = hotbarItems[selectedSlot];
+            if (itemToUse != null)
+            {
+                Debug.Log($"Використано предмет: {itemToUse.itemName}");
+            }
+            else
+            {
+                Debug.Log("Вибрана комірка порожня.");
+            }
         }
-
-        // Вибираємо випадковий предмет для підбору
-        Item randomItem = availableItems[Random.Range(0, availableItems.Count)];
-        Debug.Log($"Спроба підібрати предмет: {randomItem.itemName} (Тег: {randomItem.itemTag})");
-        AddItemToHotbar(randomItem);
     }
 }
