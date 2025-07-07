@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: -3407785216213687247}
   m_Layer: 0
   m_Name: AutoRifle
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,7 +366,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 5687bdc8a4041ad4eb182d6caceb1d21, type: 2}
   firePoint: {fileID: 0}
-  muzzleFlash: {fileID: 0}
   hitEffect: {fileID: 0}
 --- !u!1 &7228942935028793647
 GameObject:
