@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         HandleMovement();
         HandleJump();
         HandleRotation();
-        HandleCursor();
+        //HandleCursor();
     }
 
     // Метод для оновлення прив'язок клавіш з KeybindManager
@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         cameraFollowTarget.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 
-    private void HandleCursor()
+    /*private void HandleCursor()
     {
         if (gameUIManager != null)
         {
@@ -125,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
                 Cursor.visible = false;
             }
         }
-    }
+    }*/
 
     void OnCollisionStay(Collision collision)
     {
