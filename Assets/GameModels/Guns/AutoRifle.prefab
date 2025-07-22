@@ -366,10 +366,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 5687bdc8a4041ad4eb182d6caceb1d21, type: 2}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 3172633148203005810}
   hitEffect: {fileID: 0}
   VirtualCamera: {fileID: 0}
   bulletTrailPrefab: {fileID: 1849590136527574541, guid: a72e58c8ddcdc804998036fc35b61546, type: 3}
+  ammoText: {fileID: 0}
 --- !u!114 &6939199258514644803
 MonoBehaviour:
   m_ObjectHideFlags: 0

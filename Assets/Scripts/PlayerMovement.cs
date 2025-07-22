@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         HandleMovement();
         HandleJump();
         HandleRotation();
-        HandleCursor();
+        //HandleCursor();
     }
 
     private void HandleMovement()
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         cameraFollowTarget.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 
-    private void HandleCursor()
+    /*private void HandleCursor()
     {
         if (UIManager.AllUIIsClosed)
         {
@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-    }
+    }*/
 
     void OnCollisionStay(Collision collision)
     {

@@ -1,32 +1,44 @@
 using UnityEngine;
 using System.Collections;
-using static UnityEngine.GraphicsBuffer;
-using System.Security.Cryptography;
-using Cinemachine;
+using TMPro;
 
 public class GunFire : MonoBehaviour
 {
+    public static GunFire Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
+
     public WeaponStats stats;
     public Transform firePoint;
-    //public ParticleSystem muzzleFlash;
     public GameObject hitEffect;
-    public Camera VirtualCamera;
-    public GameObject bulletTrailPrefab; // Префаб трейла для визуализации трассера
+    public Camera virtualCamera;
+    public GameObject bulletTrailPrefab;
+
+    public KeyCode reloadKey = KeyCode.R;
+
+    [Header("UI Elements")]
+    public TextMeshProUGUI ammoText;
+
+    [Header("Ammo")]
+    public float currentAmmoInMagazine;
 
     private float nextTimeToFire = 0f;
-    private int currentAmmo;
     private bool isReloading = false;
 
     void Start()
     {
-        currentAmmo = stats.magazineSize;
+        UpdateUI();
+        Finder();
     }
 
     void Update()
     {
-        if (isReloading) return;
+        if (isReloading || PlayerStats.Instance == null) return;
 
-        if (currentAmmo <= 0)
+        if (currentAmmoInMagazine <= 0 || Input.GetKeyDown(reloadKey))
         {
             StartCoroutine(Reload());
             return;
@@ -44,17 +56,34 @@ public class GunFire : MonoBehaviour
         isReloading = true;
         Debug.Log("Перезарядка...");
         yield return new WaitForSeconds(stats.reloadTime);
-        currentAmmo = stats.magazineSize;
+
+        if (PlayerStats.Instance.totalAmmo <= stats.magazineSize)
+        {
+            currentAmmoInMagazine = PlayerStats.Instance.totalAmmo;
+            PlayerStats.Instance.totalAmmo = 0;
+        }
+        else if (PlayerStats.Instance.totalAmmo > stats.magazineSize)
+        {
+            currentAmmoInMagazine = stats.magazineSize;
+            PlayerStats.Instance.totalAmmo =- stats.magazineSize;
+        }
+        else
+        {
+            Debug.Log("Error Reload");
+        }
+        UpdateUI();
+
         isReloading = false;
     }
 
     void Shoot()
     {
         Debug.Log("Shoot");
-        //muzzleFlash?.Play();
-        currentAmmo--;
 
-        Ray ray = VirtualCamera.ScreenPointToRay(Input.mousePosition);
+        currentAmmoInMagazine--;
+        UpdateUI();
+
+        Ray ray = virtualCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         Vector3 hitPoint = firePoint.position + ray.direction * stats.range;
 
@@ -77,7 +106,6 @@ public class GunFire : MonoBehaviour
             }
         }
 
-        // Визуализация трассера
         StartCoroutine(SpawnTracer(firePoint.position, hitPoint));
     }
 
@@ -99,6 +127,20 @@ public class GunFire : MonoBehaviour
         }
 
         trailGO.transform.position = end;
-        Destroy(trailGO, trail.time); // Удалить после исчезновения трейла
+        Destroy(trailGO, trail.time);
+    }
+
+    public void UpdateUI()
+    {
+        if (ammoText != null)
+            ammoText.text = $"Ammo: {currentAmmoInMagazine} / {PlayerStats.Instance.totalAmmo}";
+    }
+
+    public void Finder()
+    {
+        GameObject camObj = GameObject.Find("MainCamera");
+        virtualCamera = camObj.GetComponent<Camera>();
+        GameObject textObj = GameObject.Find("Ammotext");
+        ammoText = textObj.GetComponent<TextMeshProUGUI>();
     }
 }
