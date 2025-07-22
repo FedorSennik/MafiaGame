@@ -1,13 +1,17 @@
 using UnityEngine;
 using System.Collections;
 using static UnityEngine.GraphicsBuffer;
+using System.Security.Cryptography;
+using Cinemachine;
 
 public class GunFire : MonoBehaviour
 {
     public WeaponStats stats;
     public Transform firePoint;
-// public ParticleSystem muzzleFlash;
+    //public ParticleSystem muzzleFlash;
     public GameObject hitEffect;
+    public Camera VirtualCamera;
+    public GameObject bulletTrailPrefab; // Префаб трейла для визуализации трассера
 
     private float nextTimeToFire = 0f;
     private int currentAmmo;
@@ -47,28 +51,54 @@ public class GunFire : MonoBehaviour
     void Shoot()
     {
         Debug.Log("Shoot");
-       // muzzleFlash?.Play();
+        //muzzleFlash?.Play();
         currentAmmo--;
 
+        Ray ray = VirtualCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(firePoint.position, firePoint.forward, out hit, stats.range))
+        Vector3 hitPoint = firePoint.position + ray.direction * stats.range;
+
+        if (Physics.Raycast(ray, out hit, stats.range))
         {
+            hitPoint = hit.point;
             Debug.Log("Попадание по: " + hit.transform.name);
 
-            // Эффект попадания
             if (hitEffect != null)
             {
                 GameObject impactGO = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactGO, 1f);
             }
 
-            // Урон цели
             PlayerStats target = hit.transform.GetComponent<PlayerStats>();
             if (target != null)
             {
-                target.HealthChange(-stats.damage);
+                target.TakeDamage(stats.damage);
                 Debug.Log("- health");
             }
         }
+
+        // Визуализация трассера
+        StartCoroutine(SpawnTracer(firePoint.position, hitPoint));
+    }
+
+    IEnumerator SpawnTracer(Vector3 start, Vector3 end)
+    {
+        GameObject trailGO = Instantiate(bulletTrailPrefab, start, Quaternion.identity);
+        TrailRenderer trail = trailGO.GetComponent<TrailRenderer>();
+
+        float speed = 200f;
+        float distance = Vector3.Distance(start, end);
+        float travelTime = distance / speed;
+
+        float elapsed = 0f;
+        while (elapsed < travelTime)
+        {
+            trailGO.transform.position = Vector3.Lerp(start, end, elapsed / travelTime);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        trailGO.transform.position = end;
+        Destroy(trailGO, trail.time); // Удалить после исчезновения трейла
     }
 }

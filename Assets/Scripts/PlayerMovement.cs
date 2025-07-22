@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.visible = false;
 
         // Заблокировать наклон персонажа
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
 
     void Update()

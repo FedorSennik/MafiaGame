@@ -4,28 +4,38 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public float Health = 100;
-    private float HealthC = 0;
-    public void HealthChange(float _healthchange)
-    {
-        HealthC = _healthchange + Health;
-        if(HealthC > 100)
-        {
-            Health = 100;
-        }
-        else if (HealthC <= 100)
-        {
-            Health = HealthC;
-        }
-        else if(HealthC <= 0) 
-        {
-            Health = 0;
-        }
-        else
-        {
-            Health = 0;
-            Debug.Log("Health error. Health = 0");
-        }
+    public float maxHealth = 100f;
+    public float minHealth = 0f;
+    public float currentHealth;
 
+    void Start()
+    {
+        currentHealth = maxHealth;
+    }
+
+    public void TakeDamage(float amount)
+    {
+        currentHealth -= amount;
+        currentHealth = Mathf.Clamp(currentHealth, minHealth, maxHealth);
+
+        Debug.Log("Урон: -" + amount + " HP");
+
+        if (currentHealth <= minHealth)
+        {
+            Die();
+        }
+    }
+
+    public void Heal(float amount)
+    {
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, minHealth, maxHealth);
+
+        Debug.Log("Лечение: +" + amount + " HP");
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 }
