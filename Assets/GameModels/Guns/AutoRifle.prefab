@@ -325,6 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6309806842637763123}
   - component: {fileID: -3407785216213687247}
+  - component: {fileID: 6939199258514644803}
   m_Layer: 0
   m_Name: AutoRifle
   m_TagString: Weapon
@@ -367,6 +368,27 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 5687bdc8a4041ad4eb182d6caceb1d21, type: 2}
   firePoint: {fileID: 0}
   hitEffect: {fileID: 0}
+  VirtualCamera: {fileID: 0}
+  bulletTrailPrefab: {fileID: 1849590136527574541, guid: a72e58c8ddcdc804998036fc35b61546, type: 3}
+--- !u!114 &6939199258514644803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4757512991624908163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a906ed907ce0a741acc2a8ee007775c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Gun
+    itemIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    itemTag: Weapon
+  quantity: 1
+  pickupRadius: 3
+  pickupKey: 101
 --- !u!1 &7228942935028793647
 GameObject:
   m_ObjectHideFlags: 0
