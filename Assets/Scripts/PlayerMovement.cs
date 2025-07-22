@@ -4,25 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public UIManager UIManager;
+    public GameUIManager gameUIManager;
     public float speed = 5f;
     public float jumpForce = 4f;
     public float mouseSensitivity = 2f;
 
     [Header("Camera Settings")]
-    [SerializeField] private Transform cameraFollowTarget; 
+    [SerializeField] private Transform cameraFollowTarget;
 
-    private KeyCode _forwardKey = KeyCode.W;
-    private KeyCode _backwardKey = KeyCode.S;
-    private KeyCode _leftKey = KeyCode.A;
-    private KeyCode _rightKey = KeyCode.D;
-    private KeyCode _jumpKey = KeyCode.Space;
-
-    public KeyCode ForwardKey { get => _forwardKey; set => _forwardKey = value; }
-    public KeyCode BackwardKey { get => _backwardKey; set => _backwardKey = value; }
-    public KeyCode LeftKey { get => _leftKey; set => _leftKey = value; }
-    public KeyCode RightKey { get => _rightKey; set => _rightKey = value; }
-    public KeyCode JumpKey { get => _jumpKey; set => _jumpKey = value; }
+    private KeyCode _forwardKey;
+    private KeyCode _backwardKey;
+    private KeyCode _leftKey;
+    private KeyCode _rightKey;
+    private KeyCode _jumpKey;
+    private KeyCode _sprintKey;
 
     private Rigidbody rb;
     private bool isGrounded;
@@ -31,28 +26,53 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        // Заблокировать наклон персонажа
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
+        UpdateKeybinds();
     }
 
     void Update()
     {
+        UpdateKeybinds();
+
         HandleMovement();
         HandleJump();
         HandleRotation();
         HandleCursor();
     }
 
+    // Метод для оновлення прив'язок клавіш з KeybindManager
+    void UpdateKeybinds()
+    {
+        if (KeybindManager.Instance != null)
+        {
+            _forwardKey = KeybindManager.Instance.GetKey("Forward");
+            _backwardKey = KeybindManager.Instance.GetKey("Backward");
+            _leftKey = KeybindManager.Instance.GetKey("Left");
+            _rightKey = KeybindManager.Instance.GetKey("Right");
+            _jumpKey = KeybindManager.Instance.GetKey("Jump");
+            _sprintKey = KeybindManager.Instance.GetKey("Sprint");
+        }
+    }
+
     private void HandleMovement()
     {
-        float moveX = (Input.GetKey(_leftKey) ? -1 : 0) + (Input.GetKey(_rightKey) ? 1 : 0);
-        float moveZ = (Input.GetKey(_forwardKey) ? 1 : 0) + (Input.GetKey(_backwardKey) ? -1 : 0);
+        float currentSpeed = speed;
+        if (Input.GetKey(_sprintKey))
+        {
+            currentSpeed *= 1.5f;
+        }
+
+        float moveX = 0;
+        if (Input.GetKey(_leftKey)) moveX -= 1;
+        if (Input.GetKey(_rightKey)) moveX += 1;
+
+        float moveZ = 0;
+        if (Input.GetKey(_forwardKey)) moveZ += 1;
+        if (Input.GetKey(_backwardKey)) moveZ -= 1;
 
         Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
-        rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.z * speed);
+        rb.velocity = new Vector3(moveDirection.x * currentSpeed, rb.velocity.y, moveDirection.z * currentSpeed);
     }
 
     private void HandleJump()
@@ -79,15 +99,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleCursor()
     {
-        if (UIManager.AllUIIsClosed)
+        if (gameUIManager != null)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            if (gameUIManager.AllUIIsClosed && !KeybindManager.Instance.isRebinding)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            if (KeybindManager.Instance != null && KeybindManager.Instance.isRebinding)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
     }
 

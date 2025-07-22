@@ -7,6 +7,7 @@ public class MainMenuManager : MonoBehaviour
     [Header("UI Panels")]
     public GameObject mainMenuPanel;
     public GameObject settingsPanel;
+    public GameObject keybindsPanel;
 
     void Start()
     {
@@ -18,17 +19,24 @@ public class MainMenuManager : MonoBehaviour
         {
             settingsPanel.SetActive(false);
         }
+        if (keybindsPanel != null)
+        {
+            keybindsPanel.SetActive(false);
+        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
-    // Функція, яка викликається кнопкою "Грати" або "Головне меню"
+    // Функція, яка викликається кнопкою "Грати"
     public void StartGame()
     {
         Debug.Log("Завантаження сцени гри...");
-        // Завантажуємо сцену "GameScene" за її назвою
-        SceneManager.LoadScene("GameScene");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("GameScene"); // Завантажуємо сцену "GameScene"
     }
 
-    // Функція, яка викликається кнопкою "Налаштування"
+    // Функція, яка викликається кнопкою "Налаштування" в головному меню
     public void OpenSettings()
     {
         if (mainMenuPanel != null)
@@ -39,29 +47,55 @@ public class MainMenuManager : MonoBehaviour
         {
             settingsPanel.SetActive(true);
         }
-        Debug.Log("Відкрито Налаштування.");
+        Debug.Log("Відкрито Налаштування в головному меню.");
     }
 
-    // Функція, яка викликається кнопкою "Назад" у налаштуваннях
+    // Функція, яка викликається кнопкою "Назад" у налаштуваннях головного меню
     public void CloseSettings()
     {
         if (settingsPanel != null)
         {
-            settingsPanel.SetActive(false); // Приховуємо панель налаштувань
+            settingsPanel.SetActive(false);
         }
         if (mainMenuPanel != null)
         {
-            mainMenuPanel.SetActive(true); // Показуємо головне меню
+            mainMenuPanel.SetActive(true);
         }
         Debug.Log("Закрито Налаштування. Повернуто до Головного меню.");
+    }
+
+    // Функція, яка викликається кнопкою "Налаштування Клавіш" з панелі налаштувань головного меню
+    public void OpenKeybinds()
+    {
+        if (settingsPanel != null)
+        {
+            settingsPanel.SetActive(false);
+        }
+        if (keybindsPanel != null)
+        {
+            keybindsPanel.SetActive(true);
+        }
+        Debug.Log("Відкрито Налаштування Клавіш в головному меню.");
+    }
+
+    // Функція, яка викликається кнопкою "Назад" з панелі налаштувань клавіш головного меню
+    public void CloseKeybinds()
+    {
+        if (keybindsPanel != null)
+        {
+            keybindsPanel.SetActive(false);
+        }
+        if (settingsPanel != null)
+        {
+            settingsPanel.SetActive(true);
+        }
+        Debug.Log("Закрито Налаштування Клавіш. Повернуто до Налаштувань.");
     }
 
     // Функція, яка викликається кнопкою "Вихід"
     public void QuitGame()
     {
         Debug.Log("Вихід з гри...");
-        // Ця функція працює тільки в зібраній грі (exe, apk тощо).
-        // У редакторі Unity вона просто зупиняє виконання.
         Application.Quit();
     }
 }

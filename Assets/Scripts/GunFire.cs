@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using static UnityEngine.GraphicsBuffer;
-using System.Security.Cryptography;
 using Cinemachine;
 
 public class GunFire : MonoBehaviour
@@ -11,19 +9,25 @@ public class GunFire : MonoBehaviour
     //public ParticleSystem muzzleFlash;
     public GameObject hitEffect;
     public Camera VirtualCamera;
-    public GameObject bulletTrailPrefab; // Префаб трейла для визуализации трассера
+    public GameObject bulletTrailPrefab;
 
     private float nextTimeToFire = 0f;
     private int currentAmmo;
     private bool isReloading = false;
 
+    private KeyCode _shootKey;
+    private KeyCode _reloadKey;
+
     void Start()
     {
         currentAmmo = stats.magazineSize;
+        UpdateKeybinds();
     }
 
     void Update()
     {
+        UpdateKeybinds();
+
         if (isReloading) return;
 
         if (currentAmmo <= 0)
@@ -32,10 +36,25 @@ public class GunFire : MonoBehaviour
             return;
         }
 
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
+        if (Input.GetKey(_shootKey) && Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + stats.fireRate;
             Shoot();
+        }
+
+        if (Input.GetKeyDown(_reloadKey) && currentAmmo < stats.magazineSize && !isReloading)
+        {
+            StartCoroutine(Reload());
+        }
+    }
+
+    // Метод для оновлення прив'язок клавіш з KeybindManager
+    void UpdateKeybinds()
+    {
+        if (KeybindManager.Instance != null)
+        {
+            _shootKey = KeybindManager.Instance.GetKey("Shoot");
+            _reloadKey = KeybindManager.Instance.GetKey("Reload");
         }
     }
 
@@ -45,6 +64,7 @@ public class GunFire : MonoBehaviour
         Debug.Log("Перезарядка...");
         yield return new WaitForSeconds(stats.reloadTime);
         currentAmmo = stats.magazineSize;
+        Debug.Log("Перезарядка завершена. Поточний боєзапас: " + currentAmmo);
         isReloading = false;
     }
 
