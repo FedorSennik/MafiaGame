@@ -12,12 +12,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("Camera Settings")]
     [SerializeField] private Transform cameraFollowTarget;
 
-    private KeyCode _forwardKey;
-    private KeyCode _backwardKey;
-    private KeyCode _leftKey;
-    private KeyCode _rightKey;
-    private KeyCode _jumpKey;
-    private KeyCode _sprintKey;
+    private KeyCode _forwardKey = KeyCode.W;
+    private KeyCode _backwardKey = KeyCode.S;
+    private KeyCode _leftKey = KeyCode.A;
+    private KeyCode _rightKey = KeyCode.D;
+    private KeyCode _jumpKey = KeyCode.Space;
+    private KeyCode _sprintKey = KeyCode.LeftShift;
 
     private Rigidbody rb;
     private bool isGrounded;
@@ -28,21 +28,20 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
-        UpdateKeybinds();
+        //UpdateKeybinds();
     }
 
     void Update()
     {
-        UpdateKeybinds();
+        //UpdateKeybinds();
 
         HandleMovement();
         HandleJump();
         HandleRotation();
-        //HandleCursor();
+        HandleCursor();
     }
 
-    // Метод для оновлення прив'язок клавіш з KeybindManager
-    void UpdateKeybinds()
+    /* void UpdateKeybinds()
     {
         if (KeybindManager.Instance != null)
         {
@@ -53,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
             _jumpKey = KeybindManager.Instance.GetKey("Jump");
             _sprintKey = KeybindManager.Instance.GetKey("Sprint");
         }
-    }
+    }*/
 
     private void HandleMovement()
     {
@@ -97,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         cameraFollowTarget.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 
-    /*private void HandleCursor()
+    private void HandleCursor()
     {
         if (gameUIManager != null)
         {
@@ -125,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
                 Cursor.visible = false;
             }
         }
-    }*/
+    }
 
     void OnCollisionStay(Collision collision)
     {

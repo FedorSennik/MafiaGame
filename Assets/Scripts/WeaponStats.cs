@@ -3,7 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewWeaponStats", menuName = "Weapons/WeaponStats")]
 public class WeaponStats : ScriptableObject
 {
-    [SerializeField] public bool isEquiped = false;
     public GameObject weaponModel;
     public string weaponName = "Автомат";
     public float damage = 25f;

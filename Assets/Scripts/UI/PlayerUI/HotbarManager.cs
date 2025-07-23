@@ -8,6 +8,7 @@ public class HotbarManager : MonoBehaviour
     public Image[] hotbarSlots;
     public Item[] hotbarItems;
 
+
     public int selectedSlot = 0;
 
     // Список дозволених тегів для предметів, які можуть потрапити в Hotbar
@@ -60,6 +61,17 @@ public class HotbarManager : MonoBehaviour
         }
 
         Debug.Log($"Вибрана комірка: {selectedSlot + 1}");
+
+        if (selectedSlot == 0)
+        {
+            EquipWeapon.Instance.Equip();
+            Debug.Log("WEPON IS EQUIP");
+        }
+        else
+        {
+            EquipWeapon.Instance.UnEquip();
+            Debug.Log("WEPON IS unEQUIP");
+        }
     }
 
     public bool AddItemToHotbar(Item itemToAdd)
@@ -132,6 +144,10 @@ public class HotbarManager : MonoBehaviour
             {
                 Debug.Log("Вибрана комірка порожня.");
             }
+        }
+        if (selectedSlot == 0)
+        {
+            Debug.Log("dadadasdsada");
         }
     }
 }

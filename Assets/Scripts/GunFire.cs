@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 
 public class GunFire : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class GunFire : MonoBehaviour
     [Header("Ammo")]
     public float currentAmmoInMagazine;
 
+    public bool isEquiped;
+
     private float nextTimeToFire = 0f;
     private bool isReloading = false;
 
@@ -32,19 +35,20 @@ public class GunFire : MonoBehaviour
     {
         UpdateUI();
         Finder();
+        isEquiped = false;
     }
 
     void Update()
     {
         if (isReloading || PlayerStats.Instance == null) return;
 
-        if (currentAmmoInMagazine <= 0 || Input.GetKeyDown(reloadKey))
+        if (currentAmmoInMagazine <= 0 || Input.GetKeyDown(reloadKey)&& isEquiped)
         {
             StartCoroutine(Reload());
             return;
         }
 
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
+        if (Input.GetButton("Fire1") && isEquiped && Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + stats.fireRate;
             Shoot();
@@ -75,38 +79,40 @@ public class GunFire : MonoBehaviour
 
         isReloading = false;
     }
-
+    
     void Shoot()
     {
-        Debug.Log("Shoot");
+       
+            Debug.Log("Shoot");
 
-        currentAmmoInMagazine--;
-        UpdateUI();
+            currentAmmoInMagazine--;
+            UpdateUI();
 
-        Ray ray = virtualCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        Vector3 hitPoint = firePoint.position + ray.direction * stats.range;
+            Ray ray = virtualCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            Vector3 hitPoint = firePoint.position + ray.direction * stats.range;
 
-        if (Physics.Raycast(ray, out hit, stats.range))
-        {
-            hitPoint = hit.point;
-            Debug.Log("Попадание по: " + hit.transform.name);
-
-            if (hitEffect != null)
+            if (Physics.Raycast(ray, out hit, stats.range))
             {
-                GameObject impactGO = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                Destroy(impactGO, 1f);
+                hitPoint = hit.point;
+                Debug.Log("Попадание по: " + hit.transform.name);
+
+                if (hitEffect != null)
+                {
+                    GameObject impactGO = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(impactGO, 1f);
+                }
+
+                PlayerStats target = hit.transform.GetComponent<PlayerStats>();
+                if (target != null)
+                {
+                    target.TakeDamage(stats.damage);
+                    Debug.Log("- health");
+                }
             }
 
-            PlayerStats target = hit.transform.GetComponent<PlayerStats>();
-            if (target != null)
-            {
-                target.TakeDamage(stats.damage);
-                Debug.Log("- health");
-            }
-        }
-
-        StartCoroutine(SpawnTracer(firePoint.position, hitPoint));
+            StartCoroutine(SpawnTracer(firePoint.position, hitPoint));
+        
     }
 
     IEnumerator SpawnTracer(Vector3 start, Vector3 end)

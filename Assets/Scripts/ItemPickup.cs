@@ -66,7 +66,11 @@ public class ItemPickup : MonoBehaviour
         if (wasPickedUp)
         {
             Debug.Log($"Підібрано: {quantity} x {item.itemName}");
-            Destroy(gameObject);
+            if (item.itemTag == "Weapon")
+            {
+                EquipWeapon.Instance.AddGun(gameObject);
+            }
+            
         }
         else
         {
