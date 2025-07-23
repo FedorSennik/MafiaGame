@@ -9,9 +9,6 @@ public class PlayerStats : MonoBehaviour
     public float minHealth = 0f;
     public float currentHealth;
 
-    [Header("Ammo Settings")]
-    public float totalAmmo = 120f;
-    [SerializeField] public float maxAmmo = 120f;
 
     private void Awake()
     {

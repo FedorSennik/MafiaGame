@@ -1,10 +1,11 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 
 public class GunFire : MonoBehaviour
 {
+
     public static GunFire Instance;
     private void Awake()
     {
@@ -14,9 +15,13 @@ public class GunFire : MonoBehaviour
 
     public WeaponStats stats;
     public Transform firePoint;
-    public GameObject hitEffect;
     public Camera virtualCamera;
+    private PlayerStats playerStats;
+
+    [Header("GameObject")]
+    public GameObject hitEffect;
     public GameObject bulletTrailPrefab;
+    public GameObject Player;
 
     public KeyCode reloadKey = KeyCode.R;
 
@@ -25,22 +30,26 @@ public class GunFire : MonoBehaviour
 
     [Header("Ammo")]
     public float currentAmmoInMagazine;
+    public float totalAmmo;
 
     public bool isEquiped;
+    public bool isAdded;
 
     private float nextTimeToFire = 0f;
     private bool isReloading = false;
 
     void Start()
     {
-        UpdateUI();
+        isAdded = false;
         Finder();
         isEquiped = false;
+        totalAmmo = stats.maxAmmo;
+        currentAmmoInMagazine = stats.magazineSize;
     }
 
     void Update()
     {
-        if (isReloading || PlayerStats.Instance == null) return;
+        if (isReloading) return;
 
         if (currentAmmoInMagazine <= 0 || Input.GetKeyDown(reloadKey)&& isEquiped)
         {
@@ -57,31 +66,27 @@ public class GunFire : MonoBehaviour
 
     IEnumerator Reload()
     {
+        if (isReloading || currentAmmoInMagazine == stats.magazineSize || totalAmmo <= 0)
+            yield break;
+
         isReloading = true;
-        Debug.Log("œÂÂÁ‡ˇ‰Í‡...");
+        Debug.Log("üîÑ –ü–µ—Ä–µ–∑–∞—Ä—è–¥–∫–∞...");
+
         yield return new WaitForSeconds(stats.reloadTime);
 
-        if (PlayerStats.Instance.totalAmmo <= stats.magazineSize)
-        {
-            currentAmmoInMagazine = PlayerStats.Instance.totalAmmo;
-            PlayerStats.Instance.totalAmmo = 0;
-        }
-        else if (PlayerStats.Instance.totalAmmo > stats.magazineSize)
-        {
-            currentAmmoInMagazine = stats.magazineSize;
-            PlayerStats.Instance.totalAmmo =- stats.magazineSize;
-        }
-        else
-        {
-            Debug.Log("Error Reload");
-        }
-        UpdateUI();
+        float neededAmmo = stats.magazineSize - currentAmmoInMagazine;
+        float ammoToLoad = Mathf.Min(neededAmmo, totalAmmo);
 
+        currentAmmoInMagazine += ammoToLoad;
+        totalAmmo -= ammoToLoad;
+
+        UpdateUI();
         isReloading = false;
     }
-    
+
     void Shoot()
     {
+        
        
             Debug.Log("Shoot");
 
@@ -95,7 +100,7 @@ public class GunFire : MonoBehaviour
             if (Physics.Raycast(ray, out hit, stats.range))
             {
                 hitPoint = hit.point;
-                Debug.Log("œÓÔ‡‰‡ÌËÂ ÔÓ: " + hit.transform.name);
+                Debug.Log("–ü–æ–ø–∞–¥–∞–Ω–∏–µ –ø–æ: " + hit.transform.name);
 
                 if (hitEffect != null)
                 {
@@ -111,11 +116,11 @@ public class GunFire : MonoBehaviour
                 }
             }
 
-            StartCoroutine(SpawnTracer(firePoint.position, hitPoint));
+            StartCoroutine(SpawnTracer(firePoint.position, hitPoint, stats.spread));
         
     }
 
-    IEnumerator SpawnTracer(Vector3 start, Vector3 end)
+    IEnumerator SpawnTracer(Vector3 start, Vector3 end, float spread)
     {
         GameObject trailGO = Instantiate(bulletTrailPrefab, start, Quaternion.identity);
         TrailRenderer trail = trailGO.GetComponent<TrailRenderer>();
@@ -124,29 +129,41 @@ public class GunFire : MonoBehaviour
         float distance = Vector3.Distance(start, end);
         float travelTime = distance / speed;
 
+        // ‚ñ∂Ô∏è –î–æ–±–∞–≤–ª—è–µ–º —Ä–∞–∑–±—Ä–æ—Å (spread)
+        Vector3 direction = (end - start).normalized;
+        direction += new Vector3(
+            Random.Range(-spread, spread),
+            Random.Range(-spread, spread),
+            Random.Range(-spread, spread)
+        );
+        Vector3 finalEnd = start + direction * distance;
+
         float elapsed = 0f;
         while (elapsed < travelTime)
         {
-            trailGO.transform.position = Vector3.Lerp(start, end, elapsed / travelTime);
+            trailGO.transform.position = Vector3.Lerp(start, finalEnd, elapsed / travelTime);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        trailGO.transform.position = end;
+        trailGO.transform.position = finalEnd;
         Destroy(trailGO, trail.time);
     }
 
     public void UpdateUI()
     {
         if (ammoText != null)
-            ammoText.text = $"Ammo: {currentAmmoInMagazine} / {PlayerStats.Instance.totalAmmo}";
+            ammoText.text = $"Ammo: {currentAmmoInMagazine} / {totalAmmo}";
     }
 
     public void Finder()
     {
-        GameObject camObj = GameObject.Find("MainCamera");
-        virtualCamera = camObj.GetComponent<Camera>();
-        GameObject textObj = GameObject.Find("Ammotext");
-        ammoText = textObj.GetComponent<TextMeshProUGUI>();
+            GameObject camObj = GameObject.Find("MainCamera");
+            virtualCamera = camObj.GetComponent<Camera>();
+            GameObject textObj = GameObject.Find("Ammotext");
+            ammoText = textObj.GetComponent<TextMeshProUGUI>();
+            Player = GameObject.Find("Player");
+            Player.GetComponent<PlayerStats>();
+      
     }
 }

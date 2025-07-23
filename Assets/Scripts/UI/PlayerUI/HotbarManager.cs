@@ -145,9 +145,5 @@ public class HotbarManager : MonoBehaviour
                 Debug.Log("Вибрана комірка порожня.");
             }
         }
-        if (selectedSlot == 0)
-        {
-            Debug.Log("dadadasdsada");
-        }
     }
 }

@@ -8,6 +8,8 @@ public class WeaponStats : ScriptableObject
     public float damage = 25f;
     public float fireRate = 0.2f; // Время между выстрелами
     public float range = 100f;
-    public int magazineSize = 30;
+    public float magazineSize = 30;
+    public float maxAmmo;
     public float reloadTime = 2f;
+    public float spread;
 }

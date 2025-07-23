@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e66c2a0bbfe4364c95a16a01bf95510, type: 3}
   m_Name: AutoRifle
   m_EditorClassIdentifier: 
-  isEquiped: 0
   weaponModel: {fileID: 5786097810451525583, guid: 260ff1508afea5241b6511d8fbe92201, type: 3}
   weaponName: AutoRifle
   damage: 25
   fireRate: 0.1
   range: 100
   magazineSize: 30
+  maxAmmo: 90
   reloadTime: 2
+  spread: 0.05

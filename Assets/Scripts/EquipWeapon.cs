@@ -16,13 +16,6 @@ public class EquipWeapon : MonoBehaviour
     public GameObject back;
     private GunFire firescript;
 
-    public bool isAdded;
-
-    private void Start()
-    {
-        isAdded = false;
-    }
-
     public void Equip()
     {
         equipedGun.transform.SetParent(hand.transform);
@@ -48,7 +41,8 @@ public class EquipWeapon : MonoBehaviour
         equipedGun.transform.localPosition = Vector3.zero;
         equipedGun.transform.localRotation = Quaternion.identity;
         firescript.isEquiped = false;
-        isAdded = true;
+        firescript.isAdded = true;
+        firescript.UpdateUI();
     }
 
     public void Finder()
