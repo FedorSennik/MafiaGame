@@ -3165,8 +3165,6 @@ MonoBehaviour:
   maxHealth: 100
   minHealth: 0
   currentHealth: 0
-  totalAmmo: 120
-  maxAmmo: 120
 --- !u!136 &936604079
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3571,6 +3569,7 @@ MonoBehaviour:
   selectedSlot: 0
   allowedHotbarTags:
   - Weapon
+  - Heal
   - Item
 --- !u!4 &1064994286
 Transform:
@@ -4046,7 +4045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6559362985659250037, guid: abad78f7aaab5754aa1e6776448ba4fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.043328
+      value: -3.592
       objectReference: {fileID: 0}
     - target: {fileID: 6559362985659250037, guid: abad78f7aaab5754aa1e6776448ba4fb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4054,7 +4053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6559362985659250037, guid: abad78f7aaab5754aa1e6776448ba4fb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.9863648
+      value: -2.188
       objectReference: {fileID: 0}
     - target: {fileID: 6559362985659250037, guid: abad78f7aaab5754aa1e6776448ba4fb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6360,6 +6359,66 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1001 &2521349537816386708
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 207222370493288401, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.6604
+      objectReference: {fileID: 0}
+    - target: {fileID: 207222370493288401, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0318
+      objectReference: {fileID: 0}
+    - target: {fileID: 207222370493288401, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.9795
+      objectReference: {fileID: 0}
+    - target: {fileID: 207222370493288401, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 207222370493288401, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 207222370493288401, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 207222370493288401, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 207222370493288401, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 207222370493288401, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 207222370493288401, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200259961129676284, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
+      propertyPath: m_Name
+      value: Medkit
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1200259961129676284, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9169501647932031251}
+  m_SourcePrefab: {fileID: 100100000, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
 --- !u!1001 &4531912668470279151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6441,6 +6500,31 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dd5d0a31822d934189a3f311aa61869, type: 3}
+--- !u!1 &5268020733938758401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1200259961129676284, guid: b90041ebfe5914f4ea2f97fcaa84b608, type: 3}
+  m_PrefabInstance: {fileID: 2521349537816386708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9169501647932031251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5268020733938758401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a906ed907ce0a741acc2a8ee007775c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Medkit
+    itemIcon: {fileID: 21300000, guid: 1f7c3745ab0a6b640bdcd19b1c274cfd, type: 3}
+    itemTag: Item
+    stats: {fileID: 0}
+  quantity: 1
+  pickupRadius: 3
+  pickupKey: 101
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6456,3 +6540,4 @@ SceneRoots:
   - {fileID: 1265881908}
   - {fileID: 1064994286}
   - {fileID: 1192528002}
+  - {fileID: 2521349537816386708}
