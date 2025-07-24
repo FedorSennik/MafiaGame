@@ -8,7 +8,6 @@ public class HotbarManager : MonoBehaviour
     public Image[] hotbarSlots;
     public Item[] hotbarItems;
 
-
     public int selectedSlot = 0;
 
     // Список дозволених тегів для предметів, які можуть потрапити в Hotbar
@@ -19,16 +18,19 @@ public class HotbarManager : MonoBehaviour
     {
         hotbarItems = new Item[5];
         UpdateHotbarUI();
-        SelectSlot(selectedSlot); 
+        SelectSlot(selectedSlot);
     }
 
     void Update()
     {
-        // Обробка натискання клавіш для вибору комірок (1-5)
         HandleKeyInput();
 
-        // Додаткова логіка: використання предмета з вибраного слота
-        if (Input.GetMouseButtonDown(0)) // Натискання лівої кнопки миші для використання
+        if (KeybindManager.Instance != null && KeybindManager.Instance.isRebinding)
+        {
+            return;
+        }
+
+        if (Input.GetMouseButtonDown(0))
         {
             UseSelectedItem();
         }
@@ -36,6 +38,11 @@ public class HotbarManager : MonoBehaviour
 
     void HandleKeyInput()
     {
+        if (KeybindManager.Instance != null && KeybindManager.Instance.isRebinding)
+        {
+            return;
+        }
+
         for (int i = 0; i < 5; i++)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
@@ -64,16 +71,27 @@ public class HotbarManager : MonoBehaviour
 
         if (selectedSlot == 0)
         {
-            EquipWeapon.Instance.Equip();
-            Debug.Log("WEPON IS EQUIP");
+            // Перевіряємо, чи є взагалі предмет у першому слоті, перш ніж екіпірувати
+            if (hotbarItems[selectedSlot] != null && hotbarItems[selectedSlot].itemTag == "Weapon")
+            {
+                EquipWeapon.Instance.Equip();
+                Debug.Log("WEAPON IS EQUIPED");
+            }
+            else
+            {
+                // Якщо в слоті 0 немає зброї, то розспоряджаємо поточну
+                EquipWeapon.Instance.UnEquip();
+                Debug.Log("NO WEAPON IN SLOT 1, UNEQUIPING CURRENT");
+            }
         }
-        else
+        else // Якщо вибрано будь-який інший слот, зброя знімається
         {
             EquipWeapon.Instance.UnEquip();
-            Debug.Log("WEPON IS unEQUIP");
+            Debug.Log("WEAPON IS UNEQUIPED");
         }
     }
 
+    // Додає предмет до хотбару
     public bool AddItemToHotbar(Item itemToAdd)
     {
         if (!allowedHotbarTags.Contains(itemToAdd.itemTag))
@@ -89,6 +107,7 @@ public class HotbarManager : MonoBehaviour
                 hotbarItems[0] = itemToAdd;
                 Debug.Log($"Предмет '{itemToAdd.itemName}' (зброя) додано до Hotbar'у в комірку 1.");
                 UpdateHotbarUI();
+                SelectSlot(0);
                 return true;
             }
             else
@@ -112,6 +131,7 @@ public class HotbarManager : MonoBehaviour
         return false;
     }
 
+    // Оновлює візуальне відображення слотів хотбару
     void UpdateHotbarUI()
     {
         for (int i = 0; i < hotbarSlots.Length; i++)
@@ -124,13 +144,13 @@ public class HotbarManager : MonoBehaviour
             else
             {
                 hotbarSlots[i].sprite = null;
-                hotbarSlots[i].enabled = false; 
+                hotbarSlots[i].enabled = false;
             }
             hotbarSlots[i].color = (i == selectedSlot) ? Color.yellow : Color.white;
         }
     }
 
-    // Приклад використання вибраного предмета
+    // Використання вибраного предмета
     void UseSelectedItem()
     {
         if (selectedSlot >= 0 && selectedSlot < hotbarItems.Length)

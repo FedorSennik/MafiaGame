@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public GameUIManager gameUIManager;
+
     public float speed = 5f;
     public float jumpForce = 4f;
     public float mouseSensitivity = 2f;
@@ -12,12 +13,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("Camera Settings")]
     [SerializeField] private Transform cameraFollowTarget;
 
-    private KeyCode _forwardKey = KeyCode.W;
-    private KeyCode _backwardKey = KeyCode.S;
-    private KeyCode _leftKey = KeyCode.A;
-    private KeyCode _rightKey = KeyCode.D;
-    private KeyCode _jumpKey = KeyCode.Space;
-    private KeyCode _sprintKey = KeyCode.LeftShift;
+    private KeyCode _forwardKey;
+    private KeyCode _backwardKey;
+    private KeyCode _leftKey;
+    private KeyCode _rightKey;
+    private KeyCode _jumpKey;
+    private KeyCode _sprintKey;
 
     private Rigidbody rb;
     private bool isGrounded;
@@ -28,12 +29,21 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
-        //UpdateKeybinds();
+        if (gameUIManager == null)
+        {
+            gameUIManager = FindObjectOfType<GameUIManager>();
+            if (gameUIManager == null)
+            {
+                Debug.LogError("PlayerMovement: GameUIManager не знайдено на сцені! Деякі функції гравця можуть працювати некоректно.");
+            }
+        }
+
+        UpdateKeybinds();
     }
 
     void Update()
     {
-        //UpdateKeybinds();
+        UpdateKeybinds();
 
         HandleMovement();
         HandleJump();
@@ -41,7 +51,8 @@ public class PlayerMovement : MonoBehaviour
         HandleCursor();
     }
 
-    /* void UpdateKeybinds()
+    // Метод для оновлення приватних KeyCode змінних з KeybindManager
+    void UpdateKeybinds()
     {
         if (KeybindManager.Instance != null)
         {
@@ -51,8 +62,9 @@ public class PlayerMovement : MonoBehaviour
             _rightKey = KeybindManager.Instance.GetKey("Right");
             _jumpKey = KeybindManager.Instance.GetKey("Jump");
             _sprintKey = KeybindManager.Instance.GetKey("Sprint");
+            //Debug.Log("PlayerMovement: Keybinds updated from KeybindManager.");
         }
-    }*/
+    }
 
     private void HandleMovement()
     {
@@ -87,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-        // Поворот персонажа по горизонтали
+        // Поворот персонажа по горизонталі
         transform.Rotate(Vector3.up * mouseX);
 
         // Поворот камеры по вертикали
@@ -100,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (gameUIManager != null)
         {
-            if (gameUIManager.AllUIIsClosed && !KeybindManager.Instance.isRebinding)
+            if (!gameUIManager.AnyManagerUIPanelActive && (KeybindManager.Instance == null || !KeybindManager.Instance.isRebinding))
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
@@ -126,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // Перевірка зіткнення для визначення, чи гравець на землі
     void OnCollisionStay(Collision collision)
     {
         isGrounded = true;

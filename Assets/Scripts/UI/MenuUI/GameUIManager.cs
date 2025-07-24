@@ -1,11 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class GameUIManager : MonoBehaviour
 {
-    // Singleton-екземпляр для легкого доступу з інших скриптів
     public static GameUIManager Instance { get; private set; }
 
     [Header("UI Panels")]
@@ -13,31 +11,32 @@ public class GameUIManager : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject keybindsPanel;
 
-    private List<GameObject> allUIPanels = new List<GameObject>();
+    [Header("In-Game HUD Elements")]
+    public List<GameObject> inGameHudElements = new List<GameObject>();
 
-    // Властивість, яка вказує, чи закриті всі UI панелі
-    public bool AllUIIsClosed
+    [Header("Player Control Scripts")]
+    public PlayerMovement playerMovementScript;
+    public GunFire gunFireScript;
+
+    private List<GameObject> managerUIPanels = new List<GameObject>();
+
+    public bool AnyManagerUIPanelActive
     {
         get
         {
-            foreach (GameObject panel in allUIPanels)
+            foreach (GameObject panel in managerUIPanels)
             {
                 if (panel != null && panel.activeSelf)
                 {
-                    return false;
+                    return true;
                 }
             }
-            if (KeybindManager.Instance != null && KeybindManager.Instance.isRebinding)
-            {
-                return false;
-            }
-            return true;
+            return false;
         }
     }
 
     void Awake()
     {
-        // Реалізація Singleton
         if (Instance == null)
         {
             Instance = this;
@@ -50,11 +49,11 @@ public class GameUIManager : MonoBehaviour
 
     void Start()
     {
-        if (pauseMenuPanel != null) allUIPanels.Add(pauseMenuPanel);
-        if (settingsPanel != null) allUIPanels.Add(settingsPanel);
-        if (keybindsPanel != null) allUIPanels.Add(keybindsPanel);
+        if (pauseMenuPanel != null) managerUIPanels.Add(pauseMenuPanel);
+        if (settingsPanel != null) managerUIPanels.Add(settingsPanel);
+        if (keybindsPanel != null) managerUIPanels.Add(keybindsPanel);
 
-        foreach (GameObject panel in allUIPanels)
+        foreach (GameObject panel in managerUIPanels)
         {
             if (panel != null)
             {
@@ -62,7 +61,7 @@ public class GameUIManager : MonoBehaviour
             }
         }
 
-        UpdateCursorState();
+        SetGameUIAndPlayerControlActive(true);
     }
 
     void Update()
@@ -87,7 +86,7 @@ public class GameUIManager : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Вихід з гри...");
-        Application.Quit(); // Ця функція працює тільки в зібраній грі
+        Application.Quit();
     }
 
     // Перемикання стану меню паузи
@@ -95,13 +94,24 @@ public class GameUIManager : MonoBehaviour
     {
         if (pauseMenuPanel != null)
         {
-            bool isActive = pauseMenuPanel.activeSelf;
-            pauseMenuPanel.SetActive(!isActive);
+            bool wasActive = pauseMenuPanel.activeSelf;
 
-            if (!isActive)
+            foreach (GameObject panel in managerUIPanels)
             {
-                if (settingsPanel != null) settingsPanel.SetActive(false);
-                if (keybindsPanel != null) keybindsPanel.SetActive(false);
+                if (panel != null)
+                {
+                    panel.SetActive(false);
+                }
+            }
+
+            if (!wasActive)
+            {
+                pauseMenuPanel.SetActive(true);
+                SetGameUIAndPlayerControlActive(false);
+            }
+            else
+            {
+                SetGameUIAndPlayerControlActive(true);
             }
 
             UpdateCursorState();
@@ -113,9 +123,15 @@ public class GameUIManager : MonoBehaviour
     {
         if (settingsPanel != null)
         {
+            foreach (GameObject panel in managerUIPanels)
+            {
+                if (panel != null)
+                {
+                    panel.SetActive(false);
+                }
+            }
             settingsPanel.SetActive(true);
-            if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
-            if (keybindsPanel != null) keybindsPanel.SetActive(false);
+            SetGameUIAndPlayerControlActive(false);
             UpdateCursorState();
         }
     }
@@ -126,7 +142,16 @@ public class GameUIManager : MonoBehaviour
         if (settingsPanel != null)
         {
             settingsPanel.SetActive(false);
-            if (pauseMenuPanel != null) pauseMenuPanel.SetActive(true);
+            if (pauseMenuPanel != null)
+            {
+                pauseMenuPanel.SetActive(true);
+                // Якщо після закриття налаштувань відкрите меню паузи, HUD залишається прихованим
+                // Управління гравцем також залишається заблокованим
+            }
+            else
+            {
+                SetGameUIAndPlayerControlActive(true);
+            }
             UpdateCursorState();
         }
     }
@@ -136,8 +161,15 @@ public class GameUIManager : MonoBehaviour
     {
         if (keybindsPanel != null)
         {
+            foreach (GameObject panel in managerUIPanels)
+            {
+                if (panel != null)
+                {
+                    panel.SetActive(false);
+                }
+            }
             keybindsPanel.SetActive(true);
-            if (settingsPanel != null) settingsPanel.SetActive(false);
+            SetGameUIAndPlayerControlActive(false);
             UpdateCursorState();
         }
     }
@@ -148,20 +180,51 @@ public class GameUIManager : MonoBehaviour
         if (keybindsPanel != null)
         {
             keybindsPanel.SetActive(false);
-            if (settingsPanel != null) settingsPanel.SetActive(true);
+            if (settingsPanel != null)
+            {
+                settingsPanel.SetActive(true);
+            }
+            else
+            {
+                SetGameUIAndPlayerControlActive(true);
+            }
             UpdateCursorState();
         }
     }
 
-    // Оновлення стану курсора (видимий/прихований, заблокований/розблокований)
+    // Допоміжний метод для контролю видимості HUD та активності скриптів гравця
+    private void SetGameUIAndPlayerControlActive(bool active)
+    {
+        foreach (GameObject hudElement in inGameHudElements)
+        {
+            if (hudElement != null)
+            {
+                hudElement.SetActive(active);
+            }
+        }
+
+        if (playerMovementScript != null)
+        {
+            playerMovementScript.enabled = active;
+        }
+        if (gunFireScript != null)
+        {
+            gunFireScript.enabled = active;
+        }
+
+        Debug.Log($"Game UI and Player Control set to: {active}");
+    }
+
     void UpdateCursorState()
     {
-        if (!AllUIIsClosed || (KeybindManager.Instance != null && KeybindManager.Instance.isRebinding))
+        // Курсор розблокований і видимий, якщо будь-яка з КЕРОВАНИХ UI панелей активна
+        // АБО якщо KeybindManager перебуває в режимі перепризначення (курсор також має бути видимим)
+        if (AnyManagerUIPanelActive || (KeybindManager.Instance != null && KeybindManager.Instance.isRebinding))
         {
             SetCursorLocked(false);
             SetCursorVisible(true);
         }
-        else
+        else // Інакше, курсор заблокований і прихований
         {
             SetCursorLocked(true);
             SetCursorVisible(false);

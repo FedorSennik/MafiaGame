@@ -7,6 +7,7 @@ TagManager:
   - Weapon
   - Item
   - VIRTUALCAMERA
+  - AutoRifle
   layers:
   - Default
   - TransparentFX
