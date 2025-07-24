@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 171948949200375869}
   m_Layer: 6
   m_Name: Weapon_02
-  m_TagString: Weapon
+  m_TagString: AutoRifle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -323,13 +323,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 5687bdc8a4041ad4eb182d6caceb1d21, type: 2}
   firePoint: {fileID: 2419072661156172730}
-  hitEffect: {fileID: 0}
   virtualCamera: {fileID: 0}
+  hitEffect: {fileID: 0}
   bulletTrailPrefab: {fileID: 5341742223406746680, guid: 9c3cddd6060b7cc4eadfb9cefcf6e7db, type: 3}
-  reloadKey: 114
+  Player: {fileID: 0}
   ammoText: {fileID: 0}
   currentAmmoInMagazine: 0
+  totalAmmo: 0
   isEquiped: 0
+  isAdded: 0
 --- !u!114 &171948949200375869
 MonoBehaviour:
   m_ObjectHideFlags: 0

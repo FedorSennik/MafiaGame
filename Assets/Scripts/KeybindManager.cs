@@ -56,6 +56,7 @@ public class KeybindManager : MonoBehaviour
         keyBindings.Add("Scope", KeyCode.Mouse1); // Права кнопка миші
         keyBindings.Add("Reload", KeyCode.R);
         keyBindings.Add("Sprint", KeyCode.LeftShift);
+        keyBindings.Add("Use", KeyCode.E);
         // Додайте інші дії за потребою
     }
 

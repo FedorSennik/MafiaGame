@@ -49,6 +49,7 @@ public class GunFire : MonoBehaviour
 
     void Update()
     {
+        // !! ВАЖЛИВО: Викликаємо UpdateKeybinds() щокадру, щоб завжди мати актуальні прив'язки
         UpdateKeybinds();
 
         if (isReloading) return;
@@ -73,7 +74,7 @@ public class GunFire : MonoBehaviour
         {
             _shootKey = KeybindManager.Instance.GetKey("Shoot");
             _reloadKey = KeybindManager.Instance.GetKey("Reload");
-            //Debug.Log("GunFire: Keybinds updated from KeybindManager.");
+            //Debug.Log("GunFire: Keybinds updated from KeybindManager."); // Закоментовано для чистоти консолі
         }
     }
 

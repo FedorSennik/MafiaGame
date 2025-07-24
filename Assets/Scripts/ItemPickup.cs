@@ -51,6 +51,7 @@ public class ItemPickup : MonoBehaviour
         }
     }
 
+    // Метод для підбору предмета
     void PickUp()
     {
         HotbarManager hotbarManager = FindObjectOfType<HotbarManager>();
@@ -61,16 +62,12 @@ public class ItemPickup : MonoBehaviour
             return;
         }
 
-        bool wasPickedUp = hotbarManager.AddItemToHotbar(item);
+        bool wasPickedUp = hotbarManager.AddItemToHotbar(item, this.gameObject);
 
         if (wasPickedUp)
         {
             Debug.Log($"Підібрано: {quantity} x {item.itemName}");
-            if (item.itemTag == "Weapon")
-            {
-                EquipWeapon.Instance.AddGun(gameObject);
-            }
-            
+            this.gameObject.SetActive(false);
         }
         else
         {
@@ -78,6 +75,7 @@ public class ItemPickup : MonoBehaviour
         }
     }
 
+    // Візуалізація радіуса підбору в редакторі Unity
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

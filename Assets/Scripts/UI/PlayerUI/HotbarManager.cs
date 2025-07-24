@@ -8,26 +8,38 @@ public class HotbarManager : MonoBehaviour
     public Image[] hotbarSlots;
     public Item[] hotbarItems;
 
+    public GameObject[] hotbarPhysicalObjects;
 
     public int selectedSlot = 0;
 
-    // Список дозволених тегів для предметів, які можуть потрапити в Hotbar
-    // Заповнюється в Inspector.
     public List<string> allowedHotbarTags = new List<string>();
 
     void Start()
     {
         hotbarItems = new Item[5];
+        hotbarPhysicalObjects = new GameObject[5];
         UpdateHotbarUI();
+
+        foreach (GameObject obj in hotbarPhysicalObjects)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(false);
+            }
+        }
+
         SelectSlot(selectedSlot);
     }
 
     void Update()
     {
-        // Обробка натискання клавіш для вибору комірок (1-5)
         HandleKeyInput();
 
-        // Додаткова логіка: використання предмета з вибраного слота
+        if (KeybindManager.Instance != null && KeybindManager.Instance.isRebinding)
+        {
+            return;
+        }
+
         /*if (Input.GetMouseButtonDown(0)) // Натискання лівої кнопки миші для використання
         {
             UseSelectedItem();
@@ -36,6 +48,11 @@ public class HotbarManager : MonoBehaviour
 
     void HandleKeyInput()
     {
+        if (KeybindManager.Instance != null && KeybindManager.Instance.isRebinding)
+        {
+            return;
+        }
+
         for (int i = 0; i < 5; i++)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
@@ -53,6 +70,15 @@ public class HotbarManager : MonoBehaviour
             hotbarSlots[selectedSlot].color = Color.white;
         }
 
+        if (selectedSlot < hotbarPhysicalObjects.Length && hotbarPhysicalObjects[selectedSlot] != null)
+        {
+            hotbarPhysicalObjects[selectedSlot].SetActive(false);
+            if (EquipWeapon.Instance != null && EquipWeapon.Instance.equipedGun == hotbarPhysicalObjects[selectedSlot])
+            {
+                EquipWeapon.Instance.UnEquip();
+            }
+        }
+
         selectedSlot = slotIndex;
 
         if (selectedSlot < hotbarSlots.Length && hotbarSlots[selectedSlot] != null)
@@ -62,19 +88,41 @@ public class HotbarManager : MonoBehaviour
 
         Debug.Log($"Вибрана комірка: {selectedSlot + 1}");
 
-        if (selectedSlot == 0)
+        if (selectedSlot < hotbarPhysicalObjects.Length && hotbarPhysicalObjects[selectedSlot] != null)
         {
-            EquipWeapon.Instance.Equip();
-            Debug.Log("WEPON IS EQUIP");
+            hotbarPhysicalObjects[selectedSlot].SetActive(true);
+
+            if (selectedSlot == 0 && (hotbarItems[selectedSlot].itemTag == "Weapon" || hotbarItems[selectedSlot].itemTag == "AutoRifle"))
+            {
+                if (EquipWeapon.Instance != null)
+                {
+                    EquipWeapon.Instance.equipedGun = hotbarPhysicalObjects[selectedSlot];
+                    EquipWeapon.Instance.Finder();
+                    EquipWeapon.Instance.Equip();
+                }
+                Debug.Log("WEAPON IS EQUIPED");
+            }
+            else
+            {
+                if (EquipWeapon.Instance != null && EquipWeapon.Instance.firescript != null && EquipWeapon.Instance.firescript.isEquiped)
+                {
+                    EquipWeapon.Instance.UnEquip();
+                }
+                Debug.Log("WEAPON IS UNEQUIPED or NO WEAPON IN SLOT");
+            }
         }
         else
         {
-            EquipWeapon.Instance.UnEquip();
-            Debug.Log("WEPON IS unEQUIP");
+            if (EquipWeapon.Instance != null && EquipWeapon.Instance.firescript != null && EquipWeapon.Instance.firescript.isEquiped)
+            {
+                EquipWeapon.Instance.UnEquip();
+            }
+            Debug.Log("Selected empty slot. Unequiping any active weapon.");
         }
     }
 
-    public bool AddItemToHotbar(Item itemToAdd)
+    // Додає предмет до хотбару
+    public bool AddItemToHotbar(Item itemToAdd, GameObject pickupObject)
     {
         if (!allowedHotbarTags.Contains(itemToAdd.itemTag))
         {
@@ -82,13 +130,21 @@ public class HotbarManager : MonoBehaviour
             return false;
         }
 
-        if (itemToAdd.itemTag == "Weapon")
+        if (itemToAdd.itemTag == "Weapon" || itemToAdd.itemTag == "AutoRifle")
         {
             if (hotbarItems[0] == null)
             {
                 hotbarItems[0] = itemToAdd;
+                hotbarPhysicalObjects[0] = pickupObject;
                 Debug.Log($"Предмет '{itemToAdd.itemName}' (зброя) додано до Hotbar'у в комірку 1.");
                 UpdateHotbarUI();
+
+                if (EquipWeapon.Instance != null)
+                {
+                    EquipWeapon.Instance.AddGun(pickupObject);
+                }
+
+                SelectSlot(0);
                 return true;
             }
             else
@@ -97,11 +153,12 @@ public class HotbarManager : MonoBehaviour
             }
         }
 
-        for (int i = 1; i < hotbarItems.Length; i++)
+        for (int i = 0; i < hotbarItems.Length; i++)
         {
             if (hotbarItems[i] == null)
             {
                 hotbarItems[i] = itemToAdd;
+                hotbarPhysicalObjects[i] = pickupObject;
                 Debug.Log($"Предмет '{itemToAdd.itemName}' додано до Hotbar'у в комірку {i + 1}.");
                 UpdateHotbarUI();
                 return true;
@@ -112,6 +169,7 @@ public class HotbarManager : MonoBehaviour
         return false;
     }
 
+    // Оновлює візуальне відображення слотів хотбару
     void UpdateHotbarUI()
     {
         for (int i = 0; i < hotbarSlots.Length; i++)
@@ -129,7 +187,8 @@ public class HotbarManager : MonoBehaviour
             hotbarSlots[i].color = (i == selectedSlot) ? Color.yellow : Color.white;
         }
     }
-}
+
+    // !! ЗАЛИШЕНО ДРУГА: Метод був закоментований.
     /*void UseSelectedItem()
     {
         if (selectedSlot >= 0 && selectedSlot < hotbarItems.Length)
@@ -138,11 +197,13 @@ public class HotbarManager : MonoBehaviour
             if (itemToUse != null)
             {
                 Debug.Log($"Використано предмет: {itemToUse.itemName}");
+                // Тут може бути додаткова логіка використання предмета
+                // Наприклад, виклик методу Use() на предметі або застосування ефекту
             }
             else
             {
                 Debug.Log("Вибрана комірка порожня.");
             }
         }
-    }
-}*/
+    }*/
+}
