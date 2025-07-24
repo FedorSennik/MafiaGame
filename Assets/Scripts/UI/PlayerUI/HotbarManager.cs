@@ -19,7 +19,7 @@ public class HotbarManager : MonoBehaviour
     {
         hotbarItems = new Item[5];
         UpdateHotbarUI();
-        SelectSlot(selectedSlot); 
+        SelectSlot(selectedSlot);
     }
 
     void Update()
@@ -28,10 +28,10 @@ public class HotbarManager : MonoBehaviour
         HandleKeyInput();
 
         // Додаткова логіка: використання предмета з вибраного слота
-        if (Input.GetMouseButtonDown(0)) // Натискання лівої кнопки миші для використання
+        /*if (Input.GetMouseButtonDown(0)) // Натискання лівої кнопки миші для використання
         {
             UseSelectedItem();
-        }
+        }*/
     }
 
     void HandleKeyInput()
@@ -124,14 +124,13 @@ public class HotbarManager : MonoBehaviour
             else
             {
                 hotbarSlots[i].sprite = null;
-                hotbarSlots[i].enabled = false; 
+                hotbarSlots[i].enabled = false;
             }
             hotbarSlots[i].color = (i == selectedSlot) ? Color.yellow : Color.white;
         }
     }
-
-    // Приклад використання вибраного предмета
-    void UseSelectedItem()
+}
+    /*void UseSelectedItem()
     {
         if (selectedSlot >= 0 && selectedSlot < hotbarItems.Length)
         {
@@ -146,4 +145,4 @@ public class HotbarManager : MonoBehaviour
             }
         }
     }
-}
+}*/
