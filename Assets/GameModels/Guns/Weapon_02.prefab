@@ -344,11 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a906ed907ce0a741acc2a8ee007775c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    itemName: AutoRifle
-    itemIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-    itemTag: Weapon
-    stats: {fileID: 11400000, guid: 5687bdc8a4041ad4eb182d6caceb1d21, type: 2}
+  item: {fileID: 11400000, guid: c47875f10ed6e5d4989e922c854cfdce, type: 2}
   quantity: 1
   pickupRadius: 3
   pickupKey: 101

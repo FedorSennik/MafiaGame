@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4020937853062929252}
   - component: {fileID: 7548790185400254627}
   - component: {fileID: 8269357432001014274}
+  - component: {fileID: 4882445728422164795}
   m_Layer: 0
   m_Name: Medkit
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,3 +106,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.9540792, y: 2.5032947, z: 0.4149846}
   m_Center: {x: 0, y: 1.2310425, z: 0.20749219}
+--- !u!114 &4882445728422164795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200259961129676284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a906ed907ce0a741acc2a8ee007775c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: a0ea22d10fe375843a5f27ba7cef6d82, type: 2}
+  quantity: 1
+  pickupRadius: 3
+  pickupKey: 101

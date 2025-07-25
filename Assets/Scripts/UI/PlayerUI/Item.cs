@@ -1,20 +1,18 @@
 using UnityEngine;
 
 
-[System.Serializable]
-public class Item
+[CreateAssetMenu(fileName = "NewItem", menuName = "Inventory/Item")]
+public class Item : ScriptableObject
 {
     public string itemName;
     public Sprite itemIcon;
     public string itemTag;
+    [TextArea(3, 5)]
+    public string itemDescription;
 
-    public WeaponStats stats;
-    // Конструктор
-    public Item(string name, Sprite icon, string tag, WeaponStats stats)
-    {
-        itemName = name;
-        itemIcon = icon;
-        itemTag = tag;
-        this.stats = stats;
-    }
+    [Header("Shop & Spawning")]
+    public int itemPrice = 100;
+    // !!! Важливо: Це Prefab 3D-моделі, який буде спавнитись на сцені
+    // Перетягніть сюди Prefab, на якому є компонент ItemPickup
+    public GameObject spawnablePrefab;
 }
