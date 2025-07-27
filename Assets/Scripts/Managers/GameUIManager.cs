@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -127,29 +128,37 @@ public class GameUIManager : MonoBehaviour
         SetGameUIAndPlayerControlActive(!pauseMenuPanel.activeSelf);
     }
 
-    public void OpenSettingsPanel()
+    public void StartGame()
     {
-        if (settingsPanel == null) return;
-
-        settingsPanel.SetActive(true);
-        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
-        if (keybindsPanel != null) keybindsPanel.SetActive(false);
-        if (shopPanel != null) shopPanel.SetActive(false);
-
-        SetGameUIAndPlayerControlActive(false);
+        Debug.Log("Завантаження сцени меню...");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenuScene");
     }
 
-    public void CloseSettingsPanel()
+    public void OpenSettings()
     {
-        if (settingsPanel == null) return;
-
-        settingsPanel.SetActive(false);
-        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(true);
-
-        if (!AnyManagerUIPanelActive)
+        if (pauseMenuPanel != null)
         {
-            SetGameUIAndPlayerControlActive(true);
+            pauseMenuPanel.SetActive(false);
         }
+        if (settingsPanel != null)
+        {
+            settingsPanel.SetActive(true);
+        }
+        Debug.Log("Відкрито Налаштування в меню.");
+    }
+
+    public void CloseSettings()
+    {
+        if (settingsPanel != null)
+        {
+            settingsPanel.SetActive(false);
+        }
+        if (pauseMenuPanel != null)
+        {
+            pauseMenuPanel.SetActive(true);
+        }
+        Debug.Log("Закрито Налаштування. Повернуто до Головного меню.");
     }
 
     public void OpenKeybindsPanel()
@@ -198,5 +207,11 @@ public class GameUIManager : MonoBehaviour
         {
             ShopManager.Instance.CloseShop();
         }
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Вихід з гри...");
+        Application.Quit();
     }
 }
