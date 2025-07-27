@@ -38,6 +38,7 @@ Transform:
   m_Children:
   - {fileID: 6007908583878445511}
   - {fileID: 421223114497936189}
+  - {fileID: 2412914985873675609}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6998240564568861387
@@ -172,8 +173,6 @@ MonoBehaviour:
   maxHealth: 100
   minHealth: 0
   currentHealth: 0
-  totalAmmo: 120
-  maxAmmo: 120
 --- !u!114 &6107596998290003835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +188,7 @@ MonoBehaviour:
   equipedGun: {fileID: 0}
   hand: {fileID: 4603233540809070103}
   back: {fileID: 8176652423656767904}
-  isAdded: 0
+  firescript: {fileID: 0}
 --- !u!1 &2489730754689695565
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +327,6 @@ Transform:
   m_Children:
   - {fileID: 4355890853605433804}
   - {fileID: 3750356310409202242}
-  - {fileID: 2412914985873675609}
   m_Father: {fileID: 587218204522490160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6560398773447701840
@@ -395,9 +393,9 @@ Transform:
   m_GameObject: {fileID: 8176652423656767904}
   serializedVersion: 2
   m_LocalRotation: {x: -0.049958993, y: 0.049958978, z: -0.7053397, w: 0.7053397}
-  m_LocalPosition: {x: -0.046000026, y: -0.45057124, z: -0.4830001}
+  m_LocalPosition: {x: -0.021000028, y: 0.19642878, z: -0.5070001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 421223114497936189}
+  m_Father: {fileID: 587218204522490160}
   m_LocalEulerAnglesHint: {x: 0, y: 8.103, z: -90}

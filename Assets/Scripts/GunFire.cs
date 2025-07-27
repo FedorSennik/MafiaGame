@@ -2,7 +2,7 @@
 using System.Collections;
 using TMPro;
 
-public class GunFire : MonoBehaviour
+public class GunFire : Equipment
 {
     public static GunFire Instance;
     private void Awake()
@@ -29,9 +29,6 @@ public class GunFire : MonoBehaviour
     [Header("Ammo")]
     public float currentAmmoInMagazine;
     public float totalAmmo;
-
-    public bool isEquiped;
-    public bool isAdded;
 
     private float nextTimeToFire = 0f;
     private bool isReloading = false;
@@ -102,36 +99,40 @@ public class GunFire : MonoBehaviour
     // Метод стрільби
     void Shoot()
     {
-        Debug.Log("Shoot!");
-
-        currentAmmoInMagazine--;
-        UpdateUI();
-
-        Ray ray = virtualCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        Vector3 hitPoint = firePoint.position + ray.direction * stats.range;
-
-        if (Physics.Raycast(ray, out hit, stats.range))
+        if (currentAmmoInMagazine > 0)
         {
-            hitPoint = hit.point;
-            Debug.Log("Попадание по: " + hit.transform.name);
+            Debug.Log("Shoot!");
 
-            if (hitEffect != null)
+            currentAmmoInMagazine--;
+            UpdateUI();
+
+            Ray ray = virtualCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            Vector3 hitPoint = firePoint.position + ray.direction * stats.range;
+
+            if (Physics.Raycast(ray, out hit, stats.range))
             {
-                GameObject impactGO = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                Destroy(impactGO, 1f);
+                hitPoint = hit.point;
+                Debug.Log("Попадание по: " + hit.transform.name);
+
+                if (hitEffect != null)
+                {
+                    GameObject impactGO = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(impactGO, 1f);
+                }
+
+                PlayerStats target = hit.transform.GetComponent<PlayerStats>();
+                if (target != null)
+                {
+                    target.TakeDamage(stats.damage);
+                    Debug.Log("- health");
+                }
             }
 
-            PlayerStats target = hit.transform.GetComponent<PlayerStats>();
-            if (target != null)
-            {
-                target.TakeDamage(stats.damage);
-                Debug.Log("- health");
-            }
+            StartCoroutine(SpawnTracer(firePoint.position, hitPoint, stats.spread));
         }
-
-        StartCoroutine(SpawnTracer(firePoint.position, hitPoint, stats.spread));
+        
     }
 
     // Корутина для візуалізації трасера кулі з розкидом
