@@ -20,4 +20,4 @@ MonoBehaviour:
   magazineSize: 30
   maxAmmo: 90
   reloadTime: 2
-  spread: 0.05
+  spread: 0.1
