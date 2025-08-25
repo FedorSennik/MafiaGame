@@ -6,4 +6,5 @@ public class Equipment : MonoBehaviour
 {
     public bool isEquiped;
     public bool isAdded;
+    public bool isDropped;
 }

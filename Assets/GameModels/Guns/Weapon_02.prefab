@@ -321,6 +321,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa43c76d960cc94fb504ba4e8745540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEquiped: 0
+  isAdded: 0
+  isDropped: 0
   stats: {fileID: 11400000, guid: 5687bdc8a4041ad4eb182d6caceb1d21, type: 2}
   firePoint: {fileID: 2419072661156172730}
   virtualCamera: {fileID: 0}
@@ -330,8 +333,6 @@ MonoBehaviour:
   ammoText: {fileID: 0}
   currentAmmoInMagazine: 0
   totalAmmo: 0
-  isEquiped: 0
-  isAdded: 0
 --- !u!114 &171948949200375869
 MonoBehaviour:
   m_ObjectHideFlags: 0

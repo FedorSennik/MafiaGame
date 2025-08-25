@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
@@ -54,27 +55,32 @@ public class ItemPickup : MonoBehaviour
     // Метод для підбору предмета
     void PickUp()
     {
-        HotbarManager hotbarManager = FindObjectOfType<HotbarManager>();
-
-        if (hotbarManager == null)
+        if (this.gameObject.GetComponent<Equipment>()?.isDropped == true)
         {
-            Debug.LogError("HotbarManager не знайдено на сцені! Переконайтеся, що він присутній.");
-            return;
-        }
+            HotbarManager hotbarManager = FindObjectOfType<HotbarManager>();
 
-        bool wasPickedUp = hotbarManager.AddItemToHotbar(item, this.gameObject);
+            if (hotbarManager == null)
+            {
+                Debug.LogError("HotbarManager не знайдено на сцені! Переконайтеся, що він присутній.");
+                return;
+            }
 
-        if (wasPickedUp)
-        {
-            Debug.Log($"Підібрано: {quantity} x {item.itemName}");
-            this.gameObject.SetActive(false);
+            bool wasPickedUp = hotbarManager.AddItemToHotbar(item, this.gameObject);
+
+            if (wasPickedUp)
+            {
+                Debug.Log($"Підібрано: {quantity} x {item.itemName}");
+                this.gameObject.SetActive(false);
+            }
+            else
+            {
+                Debug.Log($"Не вдалося підібрати {item.itemName}. Hotbar повний або тег не дозволено.");
+            }
+
         }
-        else
-        {
-            Debug.Log($"Не вдалося підібрати {item.itemName}. Hotbar повний або тег не дозволено.");
-        }
+        
     }
-
+    
     // Візуалізація радіуса підбору в редакторі Unity
     void OnDrawGizmosSelected()
     {
