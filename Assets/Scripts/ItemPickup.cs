@@ -1,5 +1,5 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ItemPickup : MonoBehaviour
 {
@@ -8,80 +8,100 @@ public class ItemPickup : MonoBehaviour
     public float pickupRadius = 3f;
     public KeyCode pickupKey = KeyCode.E;
 
-    private GameObject player;
+    private static List<ItemPickup> pickupsInRange = new List<ItemPickup>();
+    private static GameObject player;
+
     private bool isInRange = false;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         if (player == null)
         {
-            Debug.LogError("Об'єкт гравця з тегом 'Player' не знайдено на сцені! Підбір предметів не працюватиме.");
+            player = GameObject.FindGameObjectWithTag("Player");
+            if (player == null)
+            {
+                Debug.LogError("Об'єкт гравця з тегом 'Player' не знайдено на сцені! Підбір предметів не працюватиме.");
+            }
         }
     }
 
     void Update()
     {
-        if (player != null)
+        if (player == null) return;
+
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+
+        if (distance <= pickupRadius)
         {
-            float distance = Vector3.Distance(transform.position, player.transform.position);
-
-            if (distance <= pickupRadius)
+            if (!isInRange)
             {
-                if (!isInRange)
-                {
-                    isInRange = true;
-                    Debug.Log($"Ви можете підібрати {item.itemName}. Натисніть {pickupKey}.");
-                    // TODO: Можна додати візуальний фідбек, наприклад, підсвічування предмета або підказку UI
-                }
-
-                if (Input.GetKeyDown(pickupKey))
-                {
-                    PickUp();
-                }
+                isInRange = true;
+                pickupsInRange.Add(this);
+                Debug.Log($"Ви можете підібрати {item.itemName}. Натисніть {pickupKey}.");
+                // TODO: Візуальний фідбек
             }
-            else
+        }
+        else
+        {
+            if (isInRange)
             {
-                if (isInRange)
-                {
-                    isInRange = false;
-                    Debug.Log("Ви вийшли з радіуса підбору.");
-                    // TODO: Прибрати візуальний фідбек
-                }
+                isInRange = false;
+                pickupsInRange.Remove(this);
+                Debug.Log("Ви вийшли з радіуса підбору.");
+                // TODO: Прибрати фідбек
             }
+        }
+
+        // Обработка ввода только один раз на кадр
+        if (this == GetClosestPickup() && Input.GetKeyDown(pickupKey))
+        {
+            PickUp();
         }
     }
 
-    // Метод для підбору предмета
-    void PickUp()
+    public void PickUp()
     {
-        if (this.gameObject.GetComponent<Equipment>()?.isDropped == true)
+        if (GetComponent<Equipment>()?.isDropped == true)
         {
             HotbarManager hotbarManager = FindObjectOfType<HotbarManager>();
-
             if (hotbarManager == null)
             {
-                Debug.LogError("HotbarManager не знайдено на сцені! Переконайтеся, що він присутній.");
+                Debug.LogError("HotbarManager не знайдено на сцені!");
                 return;
             }
 
-            bool wasPickedUp = hotbarManager.AddItemToHotbar(item, this.gameObject);
-
+            bool wasPickedUp = hotbarManager.AddItemToHotbar(item, gameObject);
             if (wasPickedUp)
             {
                 Debug.Log($"Підібрано: {quantity} x {item.itemName}");
-                this.gameObject.SetActive(false);
+                gameObject.SetActive(false);
+                pickupsInRange.Remove(this);
             }
             else
             {
-                Debug.Log($"Не вдалося підібрати {item.itemName}. Hotbar повний або тег не дозволено.");
+                Debug.Log($"Не вдалося підібрати {item.itemName}.");
             }
-
         }
-        
     }
-    
-    // Візуалізація радіуса підбору в редакторі Unity
+
+    private static ItemPickup GetClosestPickup()
+    {
+        ItemPickup closest = null;
+        float minDist = float.MaxValue;
+
+        foreach (var pickup in pickupsInRange)
+        {
+            float dist = Vector3.Distance(player.transform.position, pickup.transform.position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                closest = pickup;
+            }
+        }
+
+        return closest;
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

@@ -171,9 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b25a53be229c14ea34dc6e6bb52e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  minHealth: 0
-  currentHealth: 0
+  MaxHP: 100
+  MinHP: 0
+  CurrentHP: 100
 --- !u!114 &6107596998290003835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc80cea41e27064cabff344c639a6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropPoint: {fileID: 0}
+  handObject: {fileID: 0}
+  ammoText: {fileID: 0}
+  forwardOffset: 1.5
+  throwForce: 5
 --- !u!1 &2489730754689695565
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,8 +31,8 @@ public class HealthBarUI : MonoBehaviour
             return;
         }
 
-        float currentHealth = PlayerStats.Instance.currentHealth;
-        float maxHealth = PlayerStats.Instance.maxHealth;
+        float currentHealth = PlayerStats.Instance.CurrentHP;
+        float maxHealth = PlayerStats.Instance.MaxHP;
 
         healthText.text = Mathf.RoundToInt(currentHealth).ToString();
 

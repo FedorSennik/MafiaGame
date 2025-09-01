@@ -88,8 +88,8 @@ public class HotbarManager : MonoBehaviour
         if (obj != null)
         {
             obj.SetActive(true);
-
-            if (item != null && (item.itemTag == "Weapon" || item.itemTag == "AutoRifle"))
+            //&& (item.itemTag == "Weapon" || item.itemTag == "AutoRifle"
+            if (item != null )
             {
                 if (EquipManager.Instance != null)
                 {
@@ -122,6 +122,13 @@ public class HotbarManager : MonoBehaviour
             return false;
         }
 
+        // Проверка: если это оружие и слот 0 уже занят — не подбирать
+        if ((itemToAdd.itemTag == "Weapon" || itemToAdd.itemTag == "AutoRifle") && hotbarItems[0] != null)
+        {
+            Debug.LogWarning($"Уже є зброя в першому слоті! '{itemToAdd.itemName}' не буде підібрано.");
+            return false;
+        }
+
         int targetSlot = (itemToAdd.itemTag == "Weapon" || itemToAdd.itemTag == "AutoRifle") ? 0 : FindFreeSlot();
 
         if (targetSlot == -1)
@@ -134,17 +141,13 @@ public class HotbarManager : MonoBehaviour
         hotbarPhysicalObjects[targetSlot] = pickupObject;
         UpdateHotbarUI();
 
-
         if (EquipManager.Instance != null)
             EquipManager.Instance.AddItem(pickupObject);
 
         Debug.Log($"Предмет '{itemToAdd.itemName}' додано до комірки {targetSlot + 1}.");
         SelectSlot(targetSlot);
         return true;
-
-
     }
-
     int FindFreeSlot()
     {
         for (int i = 1; i < hotbarItems.Length; i++)

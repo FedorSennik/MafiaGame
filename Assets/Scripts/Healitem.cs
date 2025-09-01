@@ -1,19 +1,47 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class HealItem : MonoBehaviour, IEquipment
+public class HealItem : Equipment, IEquipment
 {
+    [SerializeField]private GameObject healPerson;
+    [SerializeField]private PlayerStats playerStats;
+
+    [SerializeField] private bool isUsed;
+
+    private void Awake()
+    {
+        isDropped = true;
+        isUsed = false;
+    }
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0) &&  !isUsed && isEquiped)
+        {
+            playerStats.Heal(50);
+            isUsed = true;
+        }
+    }
     public void OnEquip()
     {
-        Debug.Log("HealItem: готовий до використання.");
+        isEquiped = true;
     }
 
     public void OnUnEquip()
     {
-        Debug.Log("HealItem: прибрано.");
+        isEquiped = false;
     }
 
     public void OnAdd()
     {
-        Debug.Log("HealItem: додано до інвентаря.");
+        isAdded = true;
+        isDropped = false;
+        Finder();
+    }
+
+    
+    public void Finder()
+    {
+        healPerson = transform.root.gameObject;
+        playerStats = healPerson.GetComponent<PlayerStats>();
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7548790185400254627}
   - component: {fileID: 8269357432001014274}
   - component: {fileID: 4882445728422164795}
+  - component: {fileID: 977368215581120975}
   m_Layer: 0
   m_Name: Medkit
   m_TagString: Item
@@ -122,3 +123,19 @@ MonoBehaviour:
   quantity: 1
   pickupRadius: 3
   pickupKey: 101
+--- !u!114 &977368215581120975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200259961129676284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bda167601c6604eaf98404f39f0056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEquiped: 0
+  isAdded: 0
+  isDropped: 0
+  isUsed: 0

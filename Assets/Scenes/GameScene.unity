@@ -1097,6 +1097,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2920009893793042984, guid: abad78f7aaab5754aa1e6776448ba4fb, type: 3}
+      propertyPath: isEquiped
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5786097810451525583, guid: abad78f7aaab5754aa1e6776448ba4fb, type: 3}
       propertyPath: m_Name
       value: Weapon_02
@@ -3477,9 +3481,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b25a53be229c14ea34dc6e6bb52e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  minHealth: 0
-  currentHealth: 0
+  MaxHP: 100
+  MinHP: 0
+  CurrentHP: 100
 --- !u!136 &936604079
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6875,34 +6879,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1143089721340894180, guid: 7dd5d0a31822d934189a3f311aa61869, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2489730754689695565, guid: 7dd5d0a31822d934189a3f311aa61869, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603233540809070103, guid: 7dd5d0a31822d934189a3f311aa61869, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4634837248690322249, guid: 7dd5d0a31822d934189a3f311aa61869, type: 3}
       propertyPath: gameUIManager
       value: 
       objectReference: {fileID: 1064994288}
-    - target: {fileID: 5349697001640810445, guid: 7dd5d0a31822d934189a3f311aa61869, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5853144830709878731, guid: 7dd5d0a31822d934189a3f311aa61869, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8176652423656767904, guid: 7dd5d0a31822d934189a3f311aa61869, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

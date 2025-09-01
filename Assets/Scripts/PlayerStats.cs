@@ -4,11 +4,12 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats Instance;
 
-    [Header("Health Settings")]
-    public float maxHealth = 100f;
-    public float minHealth = 0f;
-    public float currentHealth;
+    [Header("Здоровье")]
+    public int MaxHP = 100;
+    public int MinHP = 0;
+    public int CurrentHP = 100;
 
+    public bool IsAlive => CurrentHP > MinHP;
 
     private void Awake()
     {
@@ -16,30 +17,37 @@ public class PlayerStats : MonoBehaviour
             Instance = this;
     }
 
-    void Start()
+    private void Start()
     {
-        currentHealth = maxHealth;
+        CurrentHP = MaxHP;
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
-        currentHealth = Mathf.Clamp(currentHealth, minHealth, maxHealth);
-        Debug.Log("Урон: -" + amount + " HP");
+        CurrentHP -= amount;
+        CurrentHP = Mathf.Clamp(CurrentHP, MinHP, MaxHP);
+        Debug.Log($"Урон: -{amount} HP");
 
-        if (currentHealth <= minHealth)
+        if (CurrentHP <= MinHP)
             Die();
     }
 
-    public void Heal(float amount)
+    public void Heal(int amount)
     {
-        currentHealth += amount;
-        currentHealth = Mathf.Clamp(currentHealth, minHealth, maxHealth);
-        Debug.Log("Лечение: +" + amount + " HP");
+        if (!IsAlive)
+        {
+            Debug.Log("Лечение невозможно: персонаж мёртв.");
+            return;
+        }
+
+        int before = CurrentHP;
+        CurrentHP = Mathf.Clamp(CurrentHP + amount, MinHP, MaxHP);
+        Debug.Log($"Лечение: +{CurrentHP - before} HP");
     }
 
-    void Die()
+    private void Die()
     {
+        Debug.Log("Персонаж погиб.");
         Destroy(gameObject);
     }
 }
