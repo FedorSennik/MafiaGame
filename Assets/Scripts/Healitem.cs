@@ -12,6 +12,7 @@ public class HealItem : Equipment, IEquipment
     {
         isDropped = true;
         isUsed = false;
+        isEquiped = false;
     }
     private void Update()
     {
@@ -21,24 +22,42 @@ public class HealItem : Equipment, IEquipment
             isUsed = true;
         }
     }
+    public void OnRemove()
+    {
+        isAdded = false;
+        isEquiped = false;
+        isDropped = true;
+        gameObject.SetActive(true);
+        gameObject.AddComponent<Rigidbody>();
+
+    }
+    public void OnAdd()
+    {
+        isAdded = true;
+        isEquiped = false;
+        isDropped = false;
+
+        Finder();
+
+        gameObject.SetActive(false);
+
+
+        Destroy(GetComponent<Rigidbody>());
+    }
+
     public void OnEquip()
     {
         isEquiped = true;
+
+        gameObject.SetActive(true);
     }
 
     public void OnUnEquip()
     {
         isEquiped = false;
+        gameObject.SetActive(false);
     }
 
-    public void OnAdd()
-    {
-        isAdded = true;
-        isDropped = false;
-        Finder();
-    }
-
-    
     public void Finder()
     {
         healPerson = transform.root.gameObject;

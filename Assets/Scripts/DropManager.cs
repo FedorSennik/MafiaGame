@@ -35,21 +35,23 @@ public class DropManager : MonoBehaviour
 
         GameObject itemObject = HotbarManager.hotbarPhysicalObjects[slot];
         Item itemData = HotbarManager.hotbarItems[slot];
+        IEquipment itemScrip = itemObject.GetComponent<IEquipment>();
 
-        EquipManager.UnEquip();
+        EquipManager.UnEquip(itemObject);
 
         HotbarManager.hotbarItems[slot] = null;
         HotbarManager.hotbarPhysicalObjects[slot] = null;
         HotbarManager.UpdateHotbarUI();
         HotbarManager.DeselectSlot(slot);
 
+
         // Перемещаем предмет вперёд от руки
         itemObject.transform.SetParent(null);
         itemObject.transform.position = handTransform.position + handTransform.forward * forwardOffset;
-        itemObject.SetActive(true);
-        itemObject.GetComponent<Equipment>().isDropped = true;
+        itemScrip.OnRemove();
+       
 
-        itemObject.GetComponent<Equipment>().isAdded = false;
+
         EquipManager.equippedItem = null;
 
         Rigidbody rb = itemObject.GetComponent<Rigidbody>();
@@ -58,7 +60,6 @@ public class DropManager : MonoBehaviour
             rb.velocity = handTransform.forward * throwForce;
         }
 
-        ammoText.text = ("0 / 0");
         Debug.Log($"Викинуто: {itemData.itemName}");
     }
 }

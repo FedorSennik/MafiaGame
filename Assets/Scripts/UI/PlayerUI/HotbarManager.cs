@@ -71,7 +71,7 @@ public class HotbarManager : MonoBehaviour
         {
             hotbarPhysicalObjects[slot].SetActive(false);
             if (EquipManager.Instance != null && EquipManager.Instance.equippedItem == hotbarPhysicalObjects[slot])
-                EquipManager.Instance.UnEquip();
+                EquipManager.Instance.UnEquip(hotbarPhysicalObjects[slot]);
         }
     }
 
@@ -93,14 +93,14 @@ public class HotbarManager : MonoBehaviour
             {
                 if (EquipManager.Instance != null)
                 {
-                    EquipManager.Instance.Equip();
+                    EquipManager.Instance.Equip(hotbarPhysicalObjects[slot]);
                 }
                 Debug.Log("Зброя екіпірована.");
             }
             else
             {
                 if (EquipManager.Instance != null)
-                    EquipManager.Instance.UnEquip();
+                    EquipManager.Instance.UnEquip(hotbarPhysicalObjects[slot]);
 
                 Debug.Log("Не зброя або слот порожній.");
             }
@@ -108,7 +108,7 @@ public class HotbarManager : MonoBehaviour
         else
         {
             if (EquipManager.Instance != null)
-                EquipManager.Instance.UnEquip();
+                EquipManager.Instance.UnEquip(hotbarPhysicalObjects[slot]);
 
             Debug.Log("Порожній слот. Знімаємо екіпіровку.");
         }

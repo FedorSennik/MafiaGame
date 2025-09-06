@@ -6,8 +6,7 @@ public class EquipManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
+        Instance ??= this;
     }
 
     [Header("Об'єкти")]
@@ -15,48 +14,41 @@ public class EquipManager : MonoBehaviour
     public GameObject hand;
     public GameObject back;
 
-    private IEquipment equipmentScript;
+    private IEquipment IequipmentScript;
+    private Equipment equipmentScript;
 
-    public void Equip()
+    public void Equip(GameObject item)
     {
-        if (equippedItem == null)
+        equippedItem = item;
+        Finder();
+        if (equipmentScript.isDropped)
         {
-            Debug.LogWarning("EquipManager: Немає предмета для екіпірування.");
             return;
-        }
-
-        if (equipmentScript == null)
-        {
-            Finder();
-            if (equipmentScript == null) return;
         }
 
         equippedItem.transform.SetParent(hand.transform);
         equippedItem.transform.localPosition = Vector3.zero;
         equippedItem.transform.localRotation = Quaternion.identity;
-        equippedItem.SetActive(true);
 
-        equipmentScript.OnEquip();
+        IequipmentScript.OnEquip();
     }
 
-    public void UnEquip()
+    public void UnEquip(GameObject item)
     {
-        if (equippedItem == null || equipmentScript == null) return;
+        equippedItem = item;
+        Finder();
 
         equippedItem.transform.SetParent(back.transform);
         equippedItem.transform.localPosition = Vector3.zero;
         equippedItem.transform.localRotation = Quaternion.identity;
-        equippedItem.SetActive(false);
 
-        equipmentScript.OnUnEquip();
+        IequipmentScript.OnUnEquip();
     }
 
     public void AddItem(GameObject item)
     {
-        if (equippedItem != null && equippedItem != item)
-        {
-            UnEquip();
-        }
+        if (equippedItem != item)
+            UnEquip(item);
 
         equippedItem = item;
         Finder();
@@ -64,22 +56,13 @@ public class EquipManager : MonoBehaviour
         equippedItem.transform.SetParent(back.transform);
         equippedItem.transform.localPosition = Vector3.zero;
         equippedItem.transform.localRotation = Quaternion.identity;
-        equippedItem.SetActive(false);
 
-        equipmentScript?.OnAdd();
+        IequipmentScript.OnAdd();
     }
 
     private void Finder()
     {
-        if (equippedItem != null)
-        {
-            equipmentScript = equippedItem.GetComponent<IEquipment>();
-            if (equipmentScript == null)
-                Debug.LogError("EquipManager: Об'єкт не реалізує IEquipment!");
-        }
-        else
-        {
-            Debug.LogWarning("EquipManager: Немає об'єкта для Finder.");
-        }
+        IequipmentScript = equippedItem.GetComponent<IEquipment>();
+        equipmentScript = equippedItem.GetComponent<Equipment>();
     }
 }

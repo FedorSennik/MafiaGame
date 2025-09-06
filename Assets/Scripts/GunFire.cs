@@ -13,6 +13,8 @@ public class GunFire : Equipment, IEquipment
         isDropped = true;
         totalAmmo = stats.maxAmmo;
         currentAmmoInMagazine = stats.magazineSize;
+
+        
     }
 
     public WeaponStats stats;
@@ -23,6 +25,7 @@ public class GunFire : Equipment, IEquipment
     public GameObject hitEffect;
     public GameObject bulletTrailPrefab;
     public GameObject Player;
+    private Rigidbody rb;
 
     private KeyCode _shootKey;
     private KeyCode _reloadKey;
@@ -37,30 +40,49 @@ public class GunFire : Equipment, IEquipment
     private float nextTimeToFire = 0f;
     private bool isReloading = false;
 
+    public void OnRemove()
+    {
+        isAdded = false;
+        isEquiped = false;
+        isDropped = true;
+        gameObject.SetActive(true);
+        gameObject.AddComponent<Rigidbody>();
 
+    }
     public void OnAdd()
     {
         isAdded = true;
         isEquiped = false;
+        isDropped = false;
 
         Finder();
         
-        isDropped = false;
         UpdateKeybinds();
         UpdateUI();
+
+        gameObject.SetActive(false);
+
+
+        Destroy(GetComponent<Rigidbody>());
     }
 
     public void OnEquip()
     {
         isEquiped = true;
         UpdateUI();
+
+        gameObject.SetActive(true );
     }
 
     public void OnUnEquip()
     {
         isEquiped = false;
         UpdateUI();
+
+        gameObject.SetActive(false);
+
     }
+
 
     void Update()
     {
