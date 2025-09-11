@@ -1,14 +1,14 @@
-using TMPro;
+п»їusing TMPro;
 using UnityEngine;
 
 public class HouseTeleport : MonoBehaviour
 {
-    [Header("Настройки дома")]
+    [Header("РќР°СЃС‚СЂРѕР№РєРё РґРѕРјР°")]
     public GameObject roomPrefab;
     [SerializeField] private Transform roomSpawnPoint;
     public float stayTime = 5f;
 
-    [Header("Ссылки")]
+    [Header("РЎСЃС‹Р»РєРё")]
     public Transform player;
     public TextMeshProUGUI hintText;
 
@@ -18,10 +18,9 @@ public class HouseTeleport : MonoBehaviour
     private bool canEnter;
     private bool entranceSet;
 
-    private float teleportCooldown = 8f;
+    [SerializeField] private float teleportCooldown = 8f;
     private float lastTeleportTime = -Mathf.Infinity;
 
-    // Новые переменные
     private bool inRoom = false;
     private float roomExitTime = 0f;
 
@@ -37,9 +36,8 @@ public class HouseTeleport : MonoBehaviour
         {
             float remaining = Mathf.Max(0f, roomExitTime - Time.time);
             if (hintText != null)
-                hintText.text = $"Вы в комнате\nОсталось: {remaining:F1} сек.";
-
-            return; // пока в комнате — остальное не обрабатываем
+                hintText.text = $"Р’С‹ РІ РєРѕРјРЅР°С‚Рµ\nРћСЃС‚Р°Р»РѕСЃСЊ: {remaining:F1} СЃРµРє.";
+            return;
         }
 
         if (!canEnter) return;
@@ -56,12 +54,12 @@ public class HouseTeleport : MonoBehaviour
             }
             else
             {
-                Debug.Log("КД ещё не прошёл");
+                Debug.Log("РљР” РµС‰С‘ РЅРµ РїСЂРѕС€С‘Р»");
             }
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if (other.transform != player) return;
 
@@ -76,7 +74,7 @@ public class HouseTeleport : MonoBehaviour
         UpdateHintText(GetRemainingCooldown());
     }
 
-    void OnTriggerExit(Collider other)
+    void OnCollisionExit(Collision other)
     {
         if (other.transform != player) return;
 
@@ -89,13 +87,19 @@ public class HouseTeleport : MonoBehaviour
         HideHint();
 
         currentRoom = Instantiate(roomPrefab, roomSpawnPoint.position, roomSpawnPoint.rotation);
-        roomPlayerSpawn = currentRoom.transform.Find("SpawnPoint");
+        roomPlayerSpawn = currentRoom.transform.Find("PlayerSpawn");
 
         player.position = roomPlayerSpawn != null
             ? roomPlayerSpawn.position
             : currentRoom.transform.position + Vector3.up * 1.5f;
 
-        // Запоминаем время выхода
+        // рџ‘‡ РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё Р·Р°РїСѓСЃС‚РёС‚СЊ СЃРїР°РІРЅ РїСЂРµРґРјРµС‚РѕРІ, РµСЃР»Рё РЅР° РєРѕРјРЅР°С‚Рµ РµСЃС‚СЊ СЃРєСЂРёРїС‚ RoomObjectSpawner
+        RoomObjectSpawner spawner = currentRoom.GetComponent<RoomObjectSpawner>();
+        if (spawner != null)
+        {
+            spawner.SpawnObjects();
+        }
+
         inRoom = true;
         roomExitTime = Time.time + stayTime;
 
@@ -104,12 +108,21 @@ public class HouseTeleport : MonoBehaviour
 
     void ExitRoom()
     {
-        player.position = houseEntrancePos;
+        // Р•СЃР»Рё РЅР° РєРѕРјРЅР°С‚Рµ РµСЃС‚СЊ СЃРїР°РІРЅРµСЂ вЂ” СѓРґР°Р»СЏРµРј РїСЂРµРґРјРµС‚С‹ РІСЂСѓС‡РЅСѓСЋ (РЅР° СЃР»СѓС‡Р°Р№, РµСЃР»Рё РѕРЅРё РЅРµ РґРѕС‡РµСЂРЅРёРµ)
+        RoomObjectSpawner spawner = currentRoom != null ? currentRoom.GetComponent<RoomObjectSpawner>() : null;
+        if (spawner != null)
+        {
+            spawner.DestroySpawnedObjects();
+        }
+
+        // РЈРґР°Р»СЏРµРј СЃР°РјСѓ РєРѕРјРЅР°С‚Сѓ (РµСЃР»Рё РїСЂРµРґРјРµС‚С‹ Р±С‹Р»Рё РґРѕС‡РµСЂРЅРёРјРё вЂ” РѕРЅРё СѓРґР°Р»СЏС‚СЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё)
         if (currentRoom != null) Destroy(currentRoom);
 
+        player.position = houseEntrancePos;
         inRoom = false;
         HideHint();
     }
+
 
     // ===== UI =====
     void UpdateHintText(float remainingCooldown)
@@ -117,9 +130,9 @@ public class HouseTeleport : MonoBehaviour
         if (hintText == null) return;
 
         if (remainingCooldown <= 0f)
-            hintText.text = $"Нажмите F, чтобы войти\nВремя: {stayTime} сек.";
+            hintText.text = $"РќР°Р¶РјРёС‚Рµ F, С‡С‚РѕР±С‹ РІРѕР№С‚Рё\nР’СЂРµРјСЏ: {stayTime} СЃРµРє.";
         else
-            hintText.text = $"Подождите {remainingCooldown:F1} сек. до входа";
+            hintText.text = $"РџРѕРґРѕР¶РґРёС‚Рµ {remainingCooldown:F1} СЃРµРє. РґРѕ РІС…РѕРґР°";
     }
 
     void HideHint()

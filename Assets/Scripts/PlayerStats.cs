@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -9,12 +11,25 @@ public class PlayerStats : MonoBehaviour
     public int MinHP = 0;
     public int CurrentHP = 100;
 
+
+    [Header("деньги")]
+    [SerializeField]public float StealMoney;
+    [SerializeField]public float PlayerMoney;
+    public TextMeshProUGUI stealMoney;
+    public TextMeshProUGUI myMoney;
+
+    [Header("улучшения")]
+    public float DealerTrusts;
+
+
     public bool IsAlive => CurrentHP > MinHP;
 
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
+
+        DealerTrusts = 0.7f;
     }
 
     private void Start()
@@ -49,5 +64,18 @@ public class PlayerStats : MonoBehaviour
     {
         Debug.Log("Персонаж погиб.");
         Destroy(gameObject);
+    }
+
+    public void ChangeStealMoney(float money)
+    {
+        StealMoney += money;
+        UpdateUI();
+    }
+
+    public void UpdateUI()
+    {
+        stealMoney.text = ($"Вкрадені гроші {StealMoney}");
+        myMoney.text = ($"Мої гроші {PlayerMoney}");
+
     }
 }
