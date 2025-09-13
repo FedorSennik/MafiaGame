@@ -93,18 +93,18 @@ public class HouseTeleport : MonoBehaviour
             ? roomPlayerSpawn.position
             : currentRoom.transform.position + Vector3.up * 1.5f;
 
-        // 👇 Автоматически запустить спавн предметов, если на комнате есть скрипт RoomObjectSpawner
-        RoomObjectSpawner spawner = currentRoom.GetComponent<RoomObjectSpawner>();
-        if (spawner != null)
-        {
-            spawner.SpawnObjects();
-        }
+        // RoomObjectSpawner spawner = currentRoom.GetComponent<RoomObjectSpawner>();
+        // if (spawner != null)
+        // {
+        //     spawner.SpawnObjects();
+        // }
 
         inRoom = true;
         roomExitTime = Time.time + stayTime;
 
         Invoke(nameof(ExitRoom), stayTime);
     }
+
 
     void ExitRoom()
     {
