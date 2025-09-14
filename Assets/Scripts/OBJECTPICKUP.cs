@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PickableByHold : MonoBehaviour
+public class OBJECTPICKUP : MonoBehaviour
 {
     private float holdTime = 0f;
     private float requiredHoldDuration;
 
     [SerializeField] private Camera cam;
-    [SerializeField] private Slider pickupSlider;
+    [SerializeField] static public Slider pickupSlider;
 
     public ObjectStats stats;
 
@@ -16,10 +16,10 @@ public class PickableByHold : MonoBehaviour
 
     void Start()
     {
+        pickupSlider = GameObject.Find("PickUpSlider").GetComponent<Slider>();
 
-        Debug.Log("dadadadada");
-        if (cam == null)
-            cam = FindObjectOfType<Camera>();
+
+        cam = Camera.main;
 
         if (pickupSlider != null)
             pickupSlider.gameObject.SetActive(false);
@@ -85,4 +85,5 @@ public class PickableByHold : MonoBehaviour
 
         Destroy(gameObject);
     }
+
 }
