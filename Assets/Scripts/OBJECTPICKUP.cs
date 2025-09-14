@@ -11,9 +11,13 @@ public class PickableByHold : MonoBehaviour
 
     public ObjectStats stats;
 
+    
+
 
     void Start()
     {
+
+        Debug.Log("dadadadada");
         if (cam == null)
             cam = FindObjectOfType<Camera>();
 
@@ -21,6 +25,8 @@ public class PickableByHold : MonoBehaviour
             pickupSlider.gameObject.SetActive(false);
 
         requiredHoldDuration = stats.timeToPickup;
+
+
     }
 
     void Update()

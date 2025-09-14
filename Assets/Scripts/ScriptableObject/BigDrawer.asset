@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a6ba0779f830f842b72a19267cd4ba6, type: 3}
-  m_Name: Desk
+  m_Name: BigDrawer
   m_EditorClassIdentifier: 
   price: 200
   timeToPickup: 4
