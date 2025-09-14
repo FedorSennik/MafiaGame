@@ -8,6 +8,7 @@ TagManager:
   - Item
   - VIRTUALCAMERA
   - AutoRifle
+  - NPC
   layers:
   - Default
   - TransparentFX

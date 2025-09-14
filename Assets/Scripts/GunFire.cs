@@ -5,16 +5,13 @@ using TMPro;
 public class GunFire : Equipment, IEquipment
 {
     public static GunFire Instance;
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
 
         isDropped = true;
-        totalAmmo = stats.maxAmmo;
-        currentAmmoInMagazine = stats.magazineSize;
-
-        
     }
 
     public WeaponStats stats;
@@ -25,10 +22,10 @@ public class GunFire : Equipment, IEquipment
     public GameObject hitEffect;
     public GameObject bulletTrailPrefab;
     public GameObject Player;
-    private Rigidbody rb;
 
-    private KeyCode _shootKey;
-    private KeyCode _reloadKey;
+    [Header("Input")]
+    public KeyCode shootKey = KeyCode.Mouse0;
+    public KeyCode reloadKey = KeyCode.R;
 
     [Header("UI Elements")]
     public TextMeshProUGUI ammoText;
@@ -40,6 +37,52 @@ public class GunFire : Equipment, IEquipment
     private float nextTimeToFire = 0f;
     private bool isReloading = false;
 
+    private void Update()
+    {
+        if (isEquiped)
+        {
+            if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
+            {
+                Fire();
+            }
+
+            if (Input.GetKeyDown(reloadKey))
+            {
+                Reload();
+            }
+        }
+    }
+
+    public void OnAdd()
+    {
+        isAdded = true;
+        isEquiped = false;
+        isDropped = false;
+
+        if (stats != null)
+        {
+            totalAmmo = stats.maxAmmo;
+            currentAmmoInMagazine = stats.magazineSize;
+        }
+
+        gameObject.SetActive(false);
+        Destroy(GetComponent<Rigidbody>());
+    }
+
+    public void OnEquip()
+    {
+        isEquiped = true;
+        gameObject.SetActive(true);
+        Finder();
+        UpdateUI();
+    }
+
+    public void OnUnEquip()
+    {
+        isEquiped = false;
+        gameObject.SetActive(false);
+    }
+
     public void OnRemove()
     {
         isAdded = false;
@@ -47,121 +90,85 @@ public class GunFire : Equipment, IEquipment
         isDropped = true;
         gameObject.SetActive(true);
         gameObject.AddComponent<Rigidbody>();
-
-    }
-    public void OnAdd()
-    {
-        isAdded = true;
-        isEquiped = false;
-        isDropped = false;
-
-        Finder();
-        
-        UpdateKeybinds();
-        UpdateUI();
-
-        gameObject.SetActive(false);
-
-
-        Destroy(GetComponent<Rigidbody>());
     }
 
-    public void OnEquip()
+    public void Fire()
     {
-        isEquiped = true;
-        UpdateUI();
-
-        gameObject.SetActive(true );
-    }
-
-    public void OnUnEquip()
-    {
-        isEquiped = false;
-        UpdateUI();
-
-        gameObject.SetActive(false);
-
-    }
-
-
-    void Update()
-    {
-        UpdateKeybinds();
-
-        if (isReloading || !isEquiped) return;
-
-        if ((currentAmmoInMagazine <= 0 || Input.GetKeyDown(_reloadKey)) && currentAmmoInMagazine < stats.magazineSize && totalAmmo > 0)
+        if (isReloading || Time.time < nextTimeToFire)
         {
-            StartCoroutine(Reload());
             return;
         }
 
-        if (Input.GetKey(_shootKey) && Time.time >= nextTimeToFire)
+        if (currentAmmoInMagazine <= 0)
         {
-            nextTimeToFire = Time.time + stats.fireRate;
-            Shoot();
+            Debug.Log("Немає патронів, потрібно перезарядитися!");
+            return;
         }
-    }
 
-    void UpdateKeybinds()
-    {
-        if (KeybindManager.Instance != null)
-        {
-            _shootKey = KeybindManager.Instance.GetKey("Shoot");
-            _reloadKey = KeybindManager.Instance.GetKey("Reload");
-        }
-    }
-
-    IEnumerator Reload()
-    {
-        if (isReloading || currentAmmoInMagazine == stats.magazineSize || totalAmmo <= 0)
-            yield break;
-
-        isReloading = true;
-        Debug.Log("🔄 Перезарядка...");
-
-        yield return new WaitForSeconds(stats.reloadTime);
-
-        float neededAmmo = stats.magazineSize - currentAmmoInMagazine;
-        float ammoToLoad = Mathf.Min(neededAmmo, totalAmmo);
-
-        currentAmmoInMagazine += ammoToLoad;
-        totalAmmo -= ammoToLoad;
-
-        UpdateUI();
-        isReloading = false;
-    }
-
-    void Shoot()
-    {
-        if (currentAmmoInMagazine <= 0) return;
-
-        Debug.Log("Shoot!");
         currentAmmoInMagazine--;
+        nextTimeToFire = Time.time + stats.fireRate;
+
         UpdateUI();
 
-        Ray ray = virtualCamera.ScreenPointToRay(Input.mousePosition);
-        Vector3 hitPoint = firePoint.position + ray.direction * stats.range;
+        RaycastHit hit;
 
-        if (Physics.Raycast(ray, out RaycastHit hit, stats.range))
+        if (Physics.Raycast(virtualCamera.transform.position, virtualCamera.transform.forward, out hit, stats.range))
         {
-            hitPoint = hit.point;
-            Debug.Log("Попадание по: " + hit.transform.name);
+            Debug.Log($"Влучив у: {hit.collider.gameObject.name}");
+
+            if (hit.collider.TryGetComponent<PlayerStats>(out PlayerStats playerStats))
+            {
+                playerStats.TakeDamage(stats.damage);
+                Debug.Log($"Нанесено шкоди гравцю. -{stats.damage} HP.");
+            }
+            else if (hit.collider.TryGetComponent<NPCStats>(out NPCStats npcStats))
+            {
+                npcStats.TakeDamage(stats.damage);
+                Debug.Log($"Нанесено шкоди NPC. -{stats.damage} HP.");
+            }
 
             if (hitEffect != null)
-                Destroy(Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal)), 1f);
-
-            if (hit.transform.TryGetComponent(out PlayerStats target))
             {
-                target.TakeDamage(stats.damage);
-                Debug.Log("- health");
+                Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            }
+
+            if (bulletTrailPrefab != null)
+            {
+                StartCoroutine(SpawnTrail(firePoint.position, hit.point, hit.collider.gameObject.GetComponent<Rigidbody>()));
             }
         }
-
-        StartCoroutine(SpawnTracer(firePoint.position, hitPoint, stats.spread));
+        else
+        {
+            if (bulletTrailPrefab != null)
+            {
+                StartCoroutine(SpawnTrail(firePoint.position, virtualCamera.transform.position + virtualCamera.transform.forward * stats.range, null));
+            }
+        }
     }
 
-    IEnumerator SpawnTracer(Vector3 start, Vector3 end, float spread)
+    public void Reload()
+    {
+        if (!isReloading && currentAmmoInMagazine < stats.magazineSize && totalAmmo > 0)
+        {
+            StartCoroutine(ReloadCoroutine());
+        }
+    }
+
+    private IEnumerator ReloadCoroutine()
+    {
+        isReloading = true;
+        Debug.Log("Перезарядка...");
+        yield return new WaitForSeconds(stats.reloadTime);
+        int bulletsToReload = (int)Mathf.Min(stats.magazineSize - currentAmmoInMagazine, totalAmmo);
+        currentAmmoInMagazine += bulletsToReload;
+        totalAmmo -= bulletsToReload;
+
+        isReloading = false;
+        UpdateUI();
+        Debug.Log("Перезаряджено!");
+    }
+
+    public IEnumerator SpawnTrail(Vector3 start, Vector3 end, Rigidbody rb)
     {
         GameObject trailGO = Instantiate(bulletTrailPrefab, start, Quaternion.identity);
         TrailRenderer trail = trailGO.GetComponent<TrailRenderer>();
@@ -171,9 +178,9 @@ public class GunFire : Equipment, IEquipment
         float travelTime = distance / speed;
 
         Vector3 direction = (end - start).normalized + new Vector3(
-            Random.Range(-spread, spread),
-            Random.Range(-spread, spread),
-            Random.Range(-spread, spread)
+            Random.Range(-stats.spread, stats.spread),
+            Random.Range(-stats.spread, stats.spread),
+            Random.Range(-stats.spread, stats.spread)
         );
 
         Vector3 finalEnd = start + direction.normalized * distance;
@@ -206,7 +213,7 @@ public class GunFire : Equipment, IEquipment
             Debug.LogError("GunFire: 'MainCamera' not found!");
 
         if (ammoText == null)
-            Debug.LogWarning("GunFire: 'Ammotext' not found. Ammo UI will not be shown.");
+            Debug.LogError("GunFire: 'Ammotext' (TextMeshProUGUI) not found!");
 
         if (Player == null)
             Debug.LogError("GunFire: 'Player' not found!");
