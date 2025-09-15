@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class PoliceAI : MonoBehaviour
 {
     private NavMeshAgent agent;
     private Animator animator;
-    private GunFire gunScript;
+    private PistolFire gunScript;
 
     private Transform playerTransform;
     private PlayerStats playerStats;
@@ -21,16 +22,20 @@ public class PoliceAI : MonoBehaviour
     public float losePlayerRange = 25f;
 
     [Header("Налаштування Атаки")]
+    public Transform firePoint;
+    public Transform armToRaise;
     public float shootingRange = 10f;
+    public float shootingAnimationTime = 0.5f;
 
     private int currentPatrolPointIndex = 0;
     private float detectionTimer = 0f;
     private bool isChasing = false;
+    private bool canShoot = true;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        gunScript = GetComponent<GunFire>();
+        gunScript = GetComponent<PistolFire>();
         animator = GetComponent<Animator>();
 
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -48,83 +53,107 @@ public class PoliceAI : MonoBehaviour
 
     private void Update()
     {
-        if (playerStats == null || !playerStats.IsAlive)
+        if (playerTransform != null)
         {
-            agent.isStopped = true;
-            UpdateAnimations(0, false);
-            return;
-        }
+            float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
-        float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
-
-        if (isChasing)
-        {
-            HandleChaseBehavior(distanceToPlayer);
-        }
-        else
-        {
-            HandlePatrolBehavior(distanceToPlayer);
-        }
-
-        UpdateAnimations(agent.velocity.magnitude, isChasing);
-    }
-
-    private void HandlePatrolBehavior(float distanceToPlayer)
-    {
-        agent.speed = patrolSpeed;
-
-        if (distanceToPlayer <= detectionRange)
-        {
-            detectionTimer += Time.deltaTime;
-            if (detectionTimer >= graceTime)
+            if (distanceToPlayer <= detectionRange)
             {
                 isChasing = true;
-                Debug.Log("Гравець виявлений! Починається переслідування.");
+                ChasePlayer(distanceToPlayer);
+            }
+            else
+            {
+                isChasing = false;
+                Patrol();
             }
         }
         else
         {
-            detectionTimer = 0;
+            Patrol();
         }
 
-        if (patrolPoints.Length > 0 && !agent.pathPending && agent.remainingDistance < 1f)
+        UpdateAnimations();
+    }
+
+    private void ChasePlayer(float distanceToPlayer)
+    {
+        agent.speed = chaseSpeed;
+        agent.SetDestination(playerTransform.position);
+
+        if (distanceToPlayer <= shootingRange)
+        {
+            agent.isStopped = true;
+
+            Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * agent.angularSpeed);
+
+            if (canShoot)
+            {
+                StartCoroutine(Shoot());
+            }
+        }
+        else
+        {
+            agent.isStopped = false;
+        }
+    }
+
+    private void Patrol()
+    {
+        agent.speed = patrolSpeed;
+        agent.isStopped = false;
+
+        if (patrolPoints.Length == 0) return;
+
+        if (Vector3.Distance(transform.position, agent.destination) < 1f)
         {
             currentPatrolPointIndex = (currentPatrolPointIndex + 1) % patrolPoints.Length;
             SetPatrolDestination();
         }
     }
 
-    private void HandleChaseBehavior(float distanceToPlayer)
+    private IEnumerator Shoot()
     {
-        if (distanceToPlayer > losePlayerRange)
+        canShoot = false;
+        if (animator != null)
         {
-            isChasing = false;
-            Debug.Log("Гравець втрачений. Повернення до патрулювання.");
-            detectionTimer = 0;
-
-            FindClosestPatrolPoint();
-            SetPatrolDestination();
-            return;
+            animator.SetBool("IsShooting", true);
         }
 
-        agent.speed = chaseSpeed;
-        agent.SetDestination(playerTransform.position);
-
-        if (distanceToPlayer <= shootingRange)
+        if (armToRaise != null && playerTransform != null)
         {
-            if (gunScript != null)
-            {
-                gunScript.Fire();
-            }
+            armToRaise.LookAt(playerTransform);
         }
+
+        if (gunScript != null && firePoint != null)
+        {
+            gunScript.FireAtTarget(firePoint, playerTransform);
+        }
+
+        yield return new WaitForSeconds(shootingAnimationTime);
+
+        if (animator != null)
+        {
+            animator.SetBool("IsShooting", false);
+        }
+
+        if (armToRaise != null)
+        {
+            armToRaise.localRotation = Quaternion.identity;
+        }
+
+        yield return new WaitForSeconds(gunScript.fireRate);
+        canShoot = true;
     }
 
-    private void UpdateAnimations(float speed, bool isChasing)
+    private void UpdateAnimations()
     {
         if (animator != null)
         {
+            float speed = agent.velocity.magnitude;
             animator.SetFloat("Speed", speed);
-            animator.SetBool("IsChasing", isChasing);
         }
     }
 
@@ -134,24 +163,5 @@ public class PoliceAI : MonoBehaviour
         {
             agent.SetDestination(patrolPoints[currentPatrolPointIndex].position);
         }
-    }
-
-    private void FindClosestPatrolPoint()
-    {
-        float minDistance = float.MaxValue;
-        int closestPointIndex = 0;
-
-        for (int i = 0; i < patrolPoints.Length; i++)
-        {
-            if (patrolPoints[i] == null) continue;
-
-            float distance = Vector3.Distance(transform.position, patrolPoints[i].position);
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                closestPointIndex = i;
-            }
-        }
-        currentPatrolPointIndex = closestPointIndex;
     }
 }
