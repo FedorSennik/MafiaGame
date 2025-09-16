@@ -23,9 +23,9 @@ public class PoliceAI : MonoBehaviour
 
     [Header("Налаштування Атаки")]
     public Transform firePoint;
-    public Transform armToRaise;
     public float shootingRange = 10f;
     public float shootingAnimationTime = 0.5f;
+    public Transform armToRaise;
 
     private int currentPatrolPointIndex = 0;
     private float detectionTimer = 0f;
@@ -57,7 +57,7 @@ public class PoliceAI : MonoBehaviour
         {
             float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
-            if (distanceToPlayer <= detectionRange)
+            if (WantedLevel.Instance != null && WantedLevel.Instance.wantedLevel > 0)
             {
                 isChasing = true;
                 ChasePlayer(distanceToPlayer);

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 9215114591857220437}
   - component: {fileID: 6107596998290003835}
   - component: {fileID: -4771341325320223168}
+  - component: {fileID: 405308525460100222}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -174,6 +175,11 @@ MonoBehaviour:
   MaxHP: 100
   MinHP: 0
   CurrentHP: 10
+  StealMoney: 0
+  PlayerMoney: 0
+  stealMoney: {fileID: 0}
+  myMoney: {fileID: 0}
+  DealerTrusts: 0
 --- !u!114 &6107596998290003835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +211,20 @@ MonoBehaviour:
   ammoText: {fileID: 0}
   forwardOffset: 1.5
   throwForce: 5
+--- !u!114 &405308525460100222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143089721340894180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6849f4c7e8b6c448473d9730e7c9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wantedLevel: 0
+  searchTime: 30
 --- !u!1 &2489730754689695565
 GameObject:
   m_ObjectHideFlags: 0

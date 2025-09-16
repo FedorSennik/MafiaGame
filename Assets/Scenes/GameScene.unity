@@ -561,7 +561,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  pickupSlider: {fileID: 785278099}
   stats: {fileID: 11400000, guid: e68cb2254dce7b540a647a074df8f271, type: 2}
 --- !u!65 &88774345
 BoxCollider:
