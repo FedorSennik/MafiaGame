@@ -122,6 +122,21 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &25398534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3101863424185786759, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+  m_PrefabInstance: {fileID: 1422778905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &38737077 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1398429965378699571, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+  m_PrefabInstance: {fileID: 1061953311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &40287448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 366980482748411765, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+  m_PrefabInstance: {fileID: 1967407699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &47830242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -242,7 +257,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3021394072774387150, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 191646664}
   m_SourcePrefab: {fileID: 100100000, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
 --- !u!4 &49187409 stripped
 Transform:
@@ -521,7 +539,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3021394072774387150, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1525431959}
   m_SourcePrefab: {fileID: 100100000, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
 --- !u!4 &83872183 stripped
 Transform:
@@ -560,8 +581,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8151961406013b24280f5124cd56c49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
   stats: {fileID: 11400000, guid: e68cb2254dce7b540a647a074df8f271, type: 2}
+  maxDistance: 20.4
+  pickupSlider: {fileID: 785278099}
+  cam: {fileID: 188684455}
 --- !u!65 &88774345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1012,6 +1035,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69b6afc22a2bf5143bb43500f6fdc949, type: 3}
+--- !u!1 &142069398 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 366980482748411765, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+  m_PrefabInstance: {fileID: 530473642}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &142891259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1128,7 +1156,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7674863563708117942, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1955005393}
   m_SourcePrefab: {fileID: 100100000, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
 --- !u!4 &147266597 stripped
 Transform:
@@ -1307,7 +1338,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8051985769325472309, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1427052082}
   m_SourcePrefab: {fileID: 100100000, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
 --- !u!1 &156564854
 GameObject:
@@ -1442,6 +1476,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156564854}
   m_CullTransparentMesh: 1
+--- !u!1 &161369875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3101863424185786759, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+  m_PrefabInstance: {fileID: 994791432}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &163963660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5571536447997674746, guid: 32e1e79f6605c1242a465efad631fc8a, type: 3}
+  m_PrefabInstance: {fileID: 298180031}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &164562804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,6 +1521,11 @@ Transform:
   - {fileID: 1993172399}
   m_Father: {fileID: 1974552594}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &166434725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8051985769325472309, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
+  m_PrefabInstance: {fileID: 1063991331}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &166597092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6761258106301732349, guid: a123fb8bf915c794da2bea3edfebe933, type: 3}
@@ -1654,7 +1703,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1805269126570203252, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1911244948}
   m_SourcePrefab: {fileID: 100100000, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
 --- !u!1001 &186721818
 PrefabInstance:
@@ -1711,7 +1763,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8585650954766913903, guid: 5c06f3174e1062d44b9caa19b044b217, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 751021229}
   m_SourcePrefab: {fileID: 100100000, guid: 5c06f3174e1062d44b9caa19b044b217, type: 3}
 --- !u!1 &188684453
 GameObject:
@@ -1840,6 +1895,34 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &189170917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3021394072774387150, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+  m_PrefabInstance: {fileID: 601224912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &191646663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3021394072774387150, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+  m_PrefabInstance: {fileID: 49187408}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &191646664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191646663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1 &197653611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2238,7 +2321,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1360468252654966213, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1602995980}
   m_SourcePrefab: {fileID: 100100000, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
 --- !u!1 &232525782
 GameObject:
@@ -2546,7 +2632,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1360468252654966213, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2095445010}
   m_SourcePrefab: {fileID: 100100000, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
 --- !u!1 &277232380
 GameObject:
@@ -2710,7 +2799,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5571536447997674746, guid: 32e1e79f6605c1242a465efad631fc8a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1873262407}
   m_SourcePrefab: {fileID: 100100000, guid: 32e1e79f6605c1242a465efad631fc8a, type: 3}
 --- !u!1 &300245629
 GameObject:
@@ -2850,6 +2942,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69b6afc22a2bf5143bb43500f6fdc949, type: 3}
+--- !u!1 &307783128 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3101863424185786759, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+  m_PrefabInstance: {fileID: 2077167506}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &308943242 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6761258106301732349, guid: a123fb8bf915c794da2bea3edfebe933, type: 3}
@@ -3150,7 +3247,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1398429965378699571, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1637685424}
   m_SourcePrefab: {fileID: 100100000, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
 --- !u!4 &351356521 stripped
 Transform:
@@ -3192,6 +3292,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7201757420763682622, guid: 69b6afc22a2bf5143bb43500f6fdc949, type: 3}
   m_PrefabInstance: {fileID: 596043838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &360815261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7861617570233870979, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
+  m_PrefabInstance: {fileID: 1852435667}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &362151457
 GameObject:
@@ -3621,7 +3726,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1805269126570203252, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1800001082}
   m_SourcePrefab: {fileID: 100100000, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
 --- !u!114 &404178254 stripped
 MonoBehaviour:
@@ -3864,6 +3972,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 994155102}
   m_SourcePrefab: {fileID: 100100000, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
+--- !u!1 &455773051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 650591154451796056, guid: 459bf6bc825ea9845822408053e0b7aa, type: 3}
+  m_PrefabInstance: {fileID: 1750318472}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &456248178
 GameObject:
   m_ObjectHideFlags: 0
@@ -4468,7 +4581,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1398429965378699571, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1507453447}
   m_SourcePrefab: {fileID: 100100000, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
 --- !u!4 &521580319 stripped
 Transform:
@@ -4483,6 +4599,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
+    - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: hintText
+      value: 
+      objectReference: {fileID: 2074244995}
+    - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: stayTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: roomPrefab
+      value: 
+      objectReference: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+    - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: roomSpawnPoint
+      value: 
+      objectReference: {fileID: 1509884467}
+    - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: teleportCooldown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 366980482748411765, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
       propertyPath: m_Name
       value: Env_CompanyBuilding_04 (1)
@@ -4530,7 +4666,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 366980482748411765, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1438301988}
   m_SourcePrefab: {fileID: 100100000, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
 --- !u!1 &552704738
 GameObject:
@@ -4563,6 +4702,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 893640877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &554672221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1805269126570203252, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+  m_PrefabInstance: {fileID: 1752403449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &558703379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4762,6 +4906,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570107655}
   m_CullTransparentMesh: 1
+--- !u!1 &578020082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3021394072774387150, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+  m_PrefabInstance: {fileID: 1806851410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &583280630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5150,13 +5299,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3021394072774387150, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 601224914}
   m_SourcePrefab: {fileID: 100100000, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
 --- !u!4 &601224913 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2496671267302702964, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
   m_PrefabInstance: {fileID: 601224912}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &601224914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189170917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1001 &609090089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6348,6 +6518,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 893640877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &751021228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8585650954766913903, guid: 5c06f3174e1062d44b9caa19b044b217, type: 3}
+  m_PrefabInstance: {fileID: 186721818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &751021229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751021228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1 &752401082 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5557327951299580288, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
@@ -6586,6 +6779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 785278100}
   - component: {fileID: 785278099}
+  - component: {fileID: 785278101}
   m_Layer: 5
   m_Name: PickUpSlider
   m_TagString: Untagged
@@ -6666,6 +6860,19 @@ RectTransform:
   m_AnchoredPosition: {x: -6.1, y: -325.6}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &785278101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785278098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669a6fd1b7ea18943a7c1c18349ed2ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpSkider: {fileID: 0}
 --- !u!1001 &791449905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6968,6 +7175,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2326066279589264189, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
   m_PrefabInstance: {fileID: 994791432}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &831141199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161369875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!4 &843072806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8567033444478375857, guid: 167d5455369a56f46a8f4527855d3472, type: 3}
@@ -7010,6 +7235,11 @@ Transform:
   - {fileID: 1052940799}
   m_Father: {fileID: 1974552594}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &851972224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1398429965378699571, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+  m_PrefabInstance: {fileID: 1899256342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &853712491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7126,7 +7356,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7861617570233870979, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 879540132}
   m_SourcePrefab: {fileID: 100100000, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
 --- !u!4 &863415358 stripped
 Transform:
@@ -7165,12 +7398,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomPrefab: {fileID: 6885753110617772677, guid: ff1d37e55ee86964bad2ea74d5208a64, type: 3}
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
   roomSpawnPoint: {fileID: 0}
-  stayTime: 3.93
+  stayTime: 16.2
   player: {fileID: 0}
   hintText: {fileID: 2074244995}
-  teleportCooldown: 5.8
+  teleportCooldown: 1.11
 --- !u!65 &868495701
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7405,6 +7638,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 851097783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &879540131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7861617570233870979, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
+  m_PrefabInstance: {fileID: 863415357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &879540132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879540131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1001 &884474857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7646,6 +7902,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903544486}
   m_CullTransparentMesh: 1
+--- !u!1 &909466666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8051985769325472309, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
+  m_PrefabInstance: {fileID: 156303858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &921684487
 GameObject:
   m_ObjectHideFlags: 0
@@ -7910,6 +8171,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 167d5455369a56f46a8f4527855d3472, type: 3}
+--- !u!1 &980292105 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1805269126570203252, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+  m_PrefabInstance: {fileID: 181383088}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &983975520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7674863563708117942, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
+  m_PrefabInstance: {fileID: 143457444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &990358138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8244,7 +8515,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3101863424185786759, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1625697028}
   m_SourcePrefab: {fileID: 100100000, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
 --- !u!1001 &994791432
 PrefabInstance:
@@ -8301,13 +8575,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3101863424185786759, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 831141199}
   m_SourcePrefab: {fileID: 100100000, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
 --- !u!4 &1009873707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1034726627151984079, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
   m_PrefabInstance: {fileID: 1967407699}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1009873708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40287448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 0}
+  roomSpawnPoint: {fileID: 0}
+  stayTime: 5
+  player: {fileID: 0}
+  hintText: {fileID: 0}
+  teleportCooldown: 8
 --- !u!1 &1014534021
 GameObject:
   m_ObjectHideFlags: 0
@@ -8339,6 +8634,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1761857695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1027442891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3101863424185786759, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+  m_PrefabInstance: {fileID: 1260417517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1030066289
 GameObject:
   m_ObjectHideFlags: 0
@@ -8730,13 +9030,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1398429965378699571, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1061953313}
   m_SourcePrefab: {fileID: 100100000, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
 --- !u!4 &1061953312 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1739489003949300617, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
   m_PrefabInstance: {fileID: 1061953311}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1061953313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38737077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1001 &1063991331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8792,7 +9113,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8051985769325472309, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1582774166}
   m_SourcePrefab: {fileID: 100100000, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
 --- !u!1 &1064994284
 GameObject:
@@ -9497,6 +9821,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7372888656906956857, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
   m_PrefabInstance: {fileID: 1852435667}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1128510673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360815261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1 &1137014013
 GameObject:
   m_ObjectHideFlags: 0
@@ -9968,6 +10310,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1316821408789168846, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
   m_PrefabInstance: {fileID: 401925579}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1202574903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2661994169556932180, guid: 0972cd229ac9d20489bbc3a57a51be46, type: 3}
+  m_PrefabInstance: {fileID: 1707584378}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1202748906
 GameObject:
   m_ObjectHideFlags: 0
@@ -9999,6 +10346,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 232525783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1205568569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8576294685000717922, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
+  m_PrefabInstance: {fileID: 1569195487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1205568570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205568569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!4 &1205826329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7201757420763682622, guid: 69b6afc22a2bf5143bb43500f6fdc949, type: 3}
@@ -10009,6 +10379,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1739489003949300617, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
   m_PrefabInstance: {fileID: 1899256342}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1211363531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851972224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1 &1248683250
 GameObject:
   m_ObjectHideFlags: 0
@@ -10139,13 +10527,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3101863424185786759, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1260417519}
   m_SourcePrefab: {fileID: 100100000, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
 --- !u!4 &1260417518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2326066279589264189, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
   m_PrefabInstance: {fileID: 1260417517}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1260417519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027442891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1 &1270392603
 GameObject:
   m_ObjectHideFlags: 0
@@ -10818,7 +11227,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3101863424185786759, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2103429593}
   m_SourcePrefab: {fileID: 100100000, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
 --- !u!1 &1424642785
 GameObject:
@@ -10989,6 +11401,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7274921750840045711, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
   m_PrefabInstance: {fileID: 156303858}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1427052082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909466666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1001 &1427277079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11120,6 +11550,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1034726627151984079, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
   m_PrefabInstance: {fileID: 530473642}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1438301988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142069398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 0}
+  roomSpawnPoint: {fileID: 0}
+  stayTime: 5
+  player: {fileID: 0}
+  hintText: {fileID: 0}
+  teleportCooldown: 8
 --- !u!1 &1454826340
 GameObject:
   m_ObjectHideFlags: 0
@@ -11374,6 +11822,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 893640877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1507453446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1398429965378699571, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+  m_PrefabInstance: {fileID: 521580318}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1507453447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507453446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1 &1509884466
 GameObject:
   m_ObjectHideFlags: 0
@@ -11405,6 +11876,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1525431958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3021394072774387150, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+  m_PrefabInstance: {fileID: 83872182}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1525431959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525431958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!114 &1526942205 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1970944294015745111, guid: 58c31f27d13f70e45aca69d41a7fc980, type: 3}
@@ -11416,6 +11910,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1536378733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8576294685000717922, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
+  m_PrefabInstance: {fileID: 1549254966}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1542775141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11667,7 +12166,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8576294685000717922, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1763545708}
   m_SourcePrefab: {fileID: 100100000, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
 --- !u!224 &1558244570 stripped
 RectTransform:
@@ -11729,13 +12231,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8576294685000717922, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1205568570}
   m_SourcePrefab: {fileID: 100100000, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
 --- !u!4 &1582774165 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7274921750840045711, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
   m_PrefabInstance: {fileID: 1063991331}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1582774166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166434725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1 &1587735945
 GameObject:
   m_ObjectHideFlags: 0
@@ -11873,6 +12396,29 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d34be6ef738541a41aa8e2bb204076f4, type: 3}
+--- !u!1 &1602995979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1360468252654966213, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
+  m_PrefabInstance: {fileID: 223395957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1602995980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602995979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!224 &1621032100 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1525014583566530180, guid: 58c31f27d13f70e45aca69d41a7fc980, type: 3}
@@ -11900,11 +12446,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1625697027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3101863424185786759, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+  m_PrefabInstance: {fileID: 994350189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1625697028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625697027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
+--- !u!1 &1637685423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1398429965378699571, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+  m_PrefabInstance: {fileID: 351356520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1637685424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637685423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!4 &1653228989 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 165662977354894050, guid: 459bf6bc825ea9845822408053e0b7aa, type: 3}
   m_PrefabInstance: {fileID: 1750318472}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1653228990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455773051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1001 &1679982846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12025,13 +12635,57 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2661994169556932180, guid: 0972cd229ac9d20489bbc3a57a51be46, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1707584380}
   m_SourcePrefab: {fileID: 100100000, guid: 0972cd229ac9d20489bbc3a57a51be46, type: 3}
 --- !u!4 &1707584379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3439234144262573294, guid: 0972cd229ac9d20489bbc3a57a51be46, type: 3}
   m_PrefabInstance: {fileID: 1707584378}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1707584380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202574903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
+--- !u!1 &1727468577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7674863563708117942, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
+  m_PrefabInstance: {fileID: 2086974473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1727468578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727468577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1 &1737169716
 GameObject:
   m_ObjectHideFlags: 0
@@ -12156,7 +12810,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 650591154451796056, guid: 459bf6bc825ea9845822408053e0b7aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1653228990}
   m_SourcePrefab: {fileID: 100100000, guid: 459bf6bc825ea9845822408053e0b7aa, type: 3}
 --- !u!1001 &1752403449
 PrefabInstance:
@@ -12213,7 +12870,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1805269126570203252, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1952473811}
   m_SourcePrefab: {fileID: 100100000, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
 --- !u!1 &1752483090
 GameObject:
@@ -12464,6 +13124,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8957323479774498008, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
   m_PrefabInstance: {fileID: 1549254966}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1763545708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536378733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1001 &1779697834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12730,6 +13408,29 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!1 &1800001081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1805269126570203252, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+  m_PrefabInstance: {fileID: 401925579}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1800001082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800001081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1001 &1802254406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12907,13 +13608,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3021394072774387150, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1806851412}
   m_SourcePrefab: {fileID: 100100000, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
 --- !u!4 &1806851411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2496671267302702964, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
   m_PrefabInstance: {fileID: 1806851410}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1806851412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578020082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!4 &1812343115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7201757420763682622, guid: 69b6afc22a2bf5143bb43500f6fdc949, type: 3}
@@ -13047,6 +13769,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 167d5455369a56f46a8f4527855d3472, type: 3}
+--- !u!1 &1847371418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1360468252654966213, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
+  m_PrefabInstance: {fileID: 264451635}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1852435667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13102,7 +13829,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7861617570233870979, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1128510673}
   m_SourcePrefab: {fileID: 100100000, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
 --- !u!1001 &1854840885
 PrefabInstance:
@@ -13170,6 +13900,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5051282096509378112, guid: 32e1e79f6605c1242a465efad631fc8a, type: 3}
   m_PrefabInstance: {fileID: 298180031}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1873262407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163963660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1 &1891506658 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5557327951299580288, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
@@ -13257,7 +14005,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1398429965378699571, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1211363531}
   m_SourcePrefab: {fileID: 100100000, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
 --- !u!1 &1905882037
 GameObject:
@@ -13295,6 +14046,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1316821408789168846, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
   m_PrefabInstance: {fileID: 181383088}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1911244948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980292105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1 &1915376355
 GameObject:
   m_ObjectHideFlags: 0
@@ -13609,6 +14378,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1316821408789168846, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
   m_PrefabInstance: {fileID: 1752403449}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1952473811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554672221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1 &1953491336
 GameObject:
   m_ObjectHideFlags: 0
@@ -13748,6 +14535,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7046241242767255820, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
   m_PrefabInstance: {fileID: 143457444}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1955005393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983975520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1001 &1965659741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13873,6 +14678,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
+    - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: hintText
+      value: 
+      objectReference: {fileID: 2074244995}
+    - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: stayTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: roomPrefab
+      value: 
+      objectReference: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+    - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: roomSpawnPoint
+      value: 
+      objectReference: {fileID: 1509884467}
+    - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: teleportCooldown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 366980482748411765, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
       propertyPath: m_Name
       value: Env_CompanyBuilding_04
@@ -13920,7 +14745,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 366980482748411765, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1009873708}
   m_SourcePrefab: {fileID: 100100000, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
 --- !u!1 &1974552593
 GameObject:
@@ -14193,6 +15021,63 @@ Transform:
   - {fileID: 1061953312}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2010313008
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+      propertyPath: m_Name
+      value: Room1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293271778170663909, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.7009056
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293271778170663909, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293271778170663909, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 153.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293271778170663909, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293271778170663909, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293271778170663909, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293271778170663909, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293271778170663909, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293271778170663909, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293271778170663909, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
 --- !u!114 &2031898291 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7856370038385146483, guid: 58c31f27d13f70e45aca69d41a7fc980, type: 3}
@@ -14479,13 +15364,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3101863424185786759, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2077167508}
   m_SourcePrefab: {fileID: 100100000, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
 --- !u!4 &2077167507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2326066279589264189, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
   m_PrefabInstance: {fileID: 2077167506}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2077167508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307783128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!4 &2085442648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7201757420763682622, guid: 69b6afc22a2bf5143bb43500f6fdc949, type: 3}
@@ -14546,13 +15452,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7674863563708117942, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1727468578}
   m_SourcePrefab: {fileID: 100100000, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
 --- !u!4 &2095445009 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1849442357326532479, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
   m_PrefabInstance: {fileID: 264451635}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2095445010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847371418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!1 &2101202167
 GameObject:
   m_ObjectHideFlags: 0
@@ -14594,6 +15521,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2326066279589264189, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
   m_PrefabInstance: {fileID: 1422778905}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2103429593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25398534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  roomSpawnPoint: {fileID: 1509884467}
+  stayTime: 30
+  player: {fileID: 0}
+  hintText: {fileID: 2074244995}
+  teleportCooldown: 60
 --- !u!4 &2105148194 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8567033444478375857, guid: 167d5455369a56f46a8f4527855d3472, type: 3}
@@ -14999,3 +15944,4 @@ SceneRoots:
   - {fileID: 88774348}
   - {fileID: 1509884467}
   - {fileID: 1454826341}
+  - {fileID: 2010313008}

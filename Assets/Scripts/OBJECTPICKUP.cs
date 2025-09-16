@@ -1,62 +1,63 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Collider))]
 public class OBJECTPICKUP : MonoBehaviour
 {
-    private float holdTime = 0f;
+    [Header("Настройки")]
+    [SerializeField] private ObjectStats stats;        // Время и цена подъёма
+    [SerializeField] private float maxDistance = 100f; // Максимальная дистанция луча
+
+    [Header("UI")]
+    [SerializeField] public Slider pickupSlider;      // Привязать через инспектор или найти на Awake
+
+    public Camera cam;
+    private float holdTime;
     private float requiredHoldDuration;
+    private bool isHolding;
 
-    [SerializeField] private Camera cam;
-    [SerializeField] static public Slider pickupSlider;
-
-    public ObjectStats stats;
-
-    
-
-
-    void Start()
+    private void Awake()
     {
-        pickupSlider = GameObject.Find("PickUpSlider").GetComponent<Slider>();
-
-
         cam = Camera.main;
+        requiredHoldDuration = stats != null ? stats.timeToPickup : 0f;
+
+        if (pickupSlider == null && PickUpSlider.instance != null)
+            pickupSlider = PickUpSlider.instance.pickUpSkider;
 
         if (pickupSlider != null)
             pickupSlider.gameObject.SetActive(false);
-
-        requiredHoldDuration = stats.timeToPickup;
-
-
     }
 
-    void Update()
+    private void Update()
     {
-        if (cam == null) return;
+        if (cam == null || stats == null || pickupSlider == null)
+            return;
 
         if (Input.GetKey(KeyCode.E))
+            HandleHolding();
+        else if (isHolding)
+            ResetHold();
+    }
+
+    private void HandleHolding()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance) &&
+            hit.collider.gameObject == gameObject)
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, 100f) && hit.collider.gameObject == gameObject)
-            {
-                holdTime += Time.deltaTime;
+            if (!isHolding)
+                isHolding = true;
 
-                if (pickupSlider != null)
-                {
-                    pickupSlider.gameObject.SetActive(true);
-                    pickupSlider.value = holdTime / requiredHoldDuration;
-                }
+            holdTime += Time.deltaTime;
+            float normalized = Mathf.Clamp01(holdTime / requiredHoldDuration);
 
-                if (holdTime >= requiredHoldDuration)
-                {
-                    Pickup();
-                }
-            }
-            else
-            {
-                ResetHold();
-            }
+            pickupSlider.value = normalized;
+            pickupSlider.gameObject.SetActive(true);
+
+            if (holdTime >= requiredHoldDuration)
+                CompletePickup();
         }
-        else
+        else if (isHolding)
         {
             ResetHold();
         }
@@ -64,26 +65,18 @@ public class OBJECTPICKUP : MonoBehaviour
 
     private void ResetHold()
     {
+        isHolding = false;
         holdTime = 0f;
-
-        if (pickupSlider != null)
-        {
-            pickupSlider.value = 0f;
-            pickupSlider.gameObject.SetActive(false);
-        }
+        pickupSlider.value = 0f;
+        pickupSlider.gameObject.SetActive(false);
     }
 
-    private void Pickup()
+    private void CompletePickup()
     {
-        if (pickupSlider != null)
-        {
-            pickupSlider.value = 1f;
-            pickupSlider.gameObject.SetActive(false);
-        }
+        ResetHold();
 
         PlayerStats.Instance.ChangeStealMoney(stats.price);
 
         Destroy(gameObject);
     }
-
 }
