@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366980482748411765}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed94f2021dba5104dbdd2fe907f46761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomPrefab: {fileID: 0}
-  houseEntrance: {fileID: 0}
+  roomPrefab: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
   roomSpawnPoint: {fileID: 0}
-  stayTime: 60
+  stayTime: 15
   player: {fileID: 0}
   hintText: {fileID: 0}
+  teleportCooldown: 60

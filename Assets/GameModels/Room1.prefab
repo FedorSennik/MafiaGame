@@ -1761,6 +1761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4579667086480854365}
   - component: {fileID: 6355064360350655277}
+  - component: {fileID: 7201052920352376443}
   m_Layer: 0
   m_Name: (Prb)OfficeChair(Clone)
   m_TagString: Untagged
@@ -1796,9 +1797,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8151961406013b24280f5124cd56c49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  pickupSlider: {fileID: 0}
   stats: {fileID: 11400000, guid: 690100d3ba90f394ebd2ef31483a5e2c, type: 2}
+--- !u!65 &7201052920352376443
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736184003947572646}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7821727, y: 1.1359854, z: 0.8575287}
+  m_Center: {x: 0.01283288, y: 0.6507535, z: 0.009056091}
 --- !u!1 &776086942947005459
 GameObject:
   m_ObjectHideFlags: 0
@@ -6303,6 +6323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6785217573781276592}
   - component: {fileID: 7314408995572289114}
+  - component: {fileID: 3318753261489024818}
   m_Layer: 0
   m_Name: (Prb)PC(Clone)
   m_TagString: Untagged
@@ -6338,9 +6359,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8151961406013b24280f5124cd56c49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  pickupSlider: {fileID: 0}
   stats: {fileID: 11400000, guid: 714d778dfd2829744b0465886355521c, type: 2}
+--- !u!65 &3318753261489024818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3007944056434783604}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.42121223, y: 0.55051136, z: 0.82922107}
+  m_Center: {x: 0.024251906, y: 0.27362633, z: -0.0173018}
 --- !u!1 &3037414844280267815
 GameObject:
   m_ObjectHideFlags: 0
@@ -7837,6 +7877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1411996029995910218}
   - component: {fileID: 1046101379389051133}
+  - component: {fileID: 3788835370231307630}
   m_Layer: 0
   m_Name: (Prb)VendingMachine(Clone)
   m_TagString: Untagged
@@ -7872,9 +7913,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8151961406013b24280f5124cd56c49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  pickupSlider: {fileID: 0}
   stats: {fileID: 11400000, guid: 4bc69a7088a47294692d4b0da3ed7aa9, type: 2}
+--- !u!65 &3788835370231307630
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393268309431282268}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3193269, y: 2.5729942, z: 1.7137451}
+  m_Center: {x: 0.058706645, y: 1.1514592, z: 0.0055496697}
 --- !u!1 &3428929261268426669
 GameObject:
   m_ObjectHideFlags: 0
@@ -9519,6 +9579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3375619617856554552}
   - component: {fileID: 6620818654093719255}
+  - component: {fileID: 2903278536714935831}
   m_Layer: 0
   m_Name: (Prb)Desk2(Clone)
   m_TagString: Untagged
@@ -9554,9 +9615,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8151961406013b24280f5124cd56c49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  pickupSlider: {fileID: 0}
   stats: {fileID: 11400000, guid: 42f1a6b1047efcd46b740e59383f348f, type: 2}
+--- !u!65 &2903278536714935831
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3974142156040939193}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0139686, y: 0.95323324, z: 1.862556}
+  m_Center: {x: 0.006984532, y: 0.47302365, z: 0.0010040402}
 --- !u!1 &3990356850601717488
 GameObject:
   m_ObjectHideFlags: 0
@@ -9989,6 +10069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 448054964750666264}
   - component: {fileID: 2930001955724476466}
+  - component: {fileID: 7665057163949294735}
   m_Layer: 0
   m_Name: (Prb)BigDrawer(Clone)
   m_TagString: Untagged
@@ -10024,9 +10105,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8151961406013b24280f5124cd56c49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  pickupSlider: {fileID: 0}
   stats: {fileID: 11400000, guid: 4b6c68f0e1bc25241bfae01e4f6cccd8, type: 2}
+--- !u!65 &7665057163949294735
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4025573657570250891}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1100769, y: 1.1147785, z: 3.603709}
+  m_Center: {x: 0.055038452, y: 0.65357065, z: 0.103705995}
 --- !u!1 &4041663872057142758
 GameObject:
   m_ObjectHideFlags: 0
@@ -13344,6 +13444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6425896698602744800}
   - component: {fileID: 834876583338363271}
+  - component: {fileID: 8291695169604674471}
   m_Layer: 0
   m_Name: (Prb)DeskPrinter(Clone)
   m_TagString: Untagged
@@ -13379,9 +13480,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8151961406013b24280f5124cd56c49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  pickupSlider: {fileID: 0}
   stats: {fileID: 11400000, guid: 42f1a6b1047efcd46b740e59383f348f, type: 2}
+--- !u!65 &8291695169604674471
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278226975793818267}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.56627464, y: 0.24046516, z: 0.69065857}
+  m_Center: {x: -2.855538, y: 0.48697853, z: -0.813591}
 --- !u!1 &5311018961942809128
 GameObject:
   m_ObjectHideFlags: 0
@@ -14172,6 +14292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6003853029550523003}
   - component: {fileID: 2089442247884884944}
+  - component: {fileID: 2996669390782888407}
   m_Layer: 0
   m_Name: (Prb)Clock(Clone)
   m_TagString: Untagged
@@ -14207,9 +14328,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8151961406013b24280f5124cd56c49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  pickupSlider: {fileID: 0}
   stats: {fileID: 11400000, guid: e68cb2254dce7b540a647a074df8f271, type: 2}
+--- !u!65 &2996669390782888407
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5639241760769167327}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.055360515, y: 0.78609705, z: 0.5778254}
+  m_Center: {x: 0.01776504, y: -0.106951475, z: -0.00035595894}
 --- !u!1 &5749862492870949325
 GameObject:
   m_ObjectHideFlags: 0
