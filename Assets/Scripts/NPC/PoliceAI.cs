@@ -27,6 +27,9 @@ public class PoliceAI : MonoBehaviour
     public float shootingAnimationTime = 0.5f;
     public Transform armToRaise;
 
+    private float chaseTimer = 0f;
+    public float chaseTimeWithoutLoss = 20f;
+
     private int currentPatrolPointIndex = 0;
     private float detectionTimer = 0f;
     private bool isChasing = false;
@@ -57,7 +60,13 @@ public class PoliceAI : MonoBehaviour
         {
             float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
-            if (WantedLevel.Instance != null && WantedLevel.Instance.wantedLevel > 0)
+            if (WantedLevel.Instance != null && WantedLevel.Instance.isPlayerInside)
+            {
+                agent.isStopped = true;
+                isChasing = false;
+            }
+
+            else if (WantedLevel.Instance != null && WantedLevel.Instance.wantedLevel > 0)
             {
                 isChasing = true;
                 ChasePlayer(distanceToPlayer);

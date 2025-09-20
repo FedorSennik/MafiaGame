@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class WantedLevel : MonoBehaviour
 {
@@ -7,6 +8,12 @@ public class WantedLevel : MonoBehaviour
     [Header("Налаштування рівня розшуку")]
     public int wantedLevel = 0;
     public float searchTime = 30f;
+
+    [Header("UI Елементи")]
+    public TextMeshProUGUI wantedLevelText;
+
+    [Header("Статус гравця")]
+    public bool isPlayerInside = false;
 
     private float searchTimer = 0f;
     private bool isBeingSearched = false;
@@ -41,6 +48,8 @@ public class WantedLevel : MonoBehaviour
                 Debug.Log("Рівень розшуку скинуто. Гравця не знайдено.");
             }
         }
+
+        UpdateUI();
     }
 
     public void IncreaseWantedLevel(int amount)
@@ -49,5 +58,21 @@ public class WantedLevel : MonoBehaviour
         searchTimer = searchTime;
         isBeingSearched = true;
         Debug.Log($"Рівень розшуку підвищено на {amount}. Поточний рівень: {wantedLevel}");
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        if (wantedLevelText != null)
+        {
+            if (wantedLevel > 0)
+            {
+                wantedLevelText.text = $"Рівень розшуку: {wantedLevel}";
+            }
+            else
+            {
+                wantedLevelText.text = "";
+            }
+        }
     }
 }

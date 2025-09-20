@@ -196,9 +196,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
     - target: {fileID: 383193498019127022, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 383193498019127022, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 2496671267302702964, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
       propertyPath: m_LocalPosition.x
       value: -105.17987
@@ -242,6 +246,14 @@ PrefabInstance:
     - target: {fileID: 3021394072774387150, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
       propertyPath: m_Name
       value: Env_Motel_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207403660560150765, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207403660560150765, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -479,13 +491,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
     - target: {fileID: 383193498019127022, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 383193498019127022, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
       propertyPath: hintText
       value: 
       objectReference: {fileID: 2074244995}
     - target: {fileID: 383193498019127022, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 2496671267302702964, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
       propertyPath: m_LocalPosition.x
       value: -105.17645
@@ -529,6 +545,14 @@ PrefabInstance:
     - target: {fileID: 3021394072774387150, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
       propertyPath: m_Name
       value: Env_Motel_05 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207403660560150765, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207403660560150765, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1092,6 +1116,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
+    - target: {fileID: 1869878419489288883, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869878419489288883, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7046241242767255820, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -50.83645
@@ -1133,9 +1165,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7635953613025256054, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 7635953613025256054, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 7674863563708117942, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
       propertyPath: m_Name
       value: Env_ResidentBuilding_04 (1)
@@ -1169,6 +1205,10 @@ PrefabInstance:
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
+      propertyPath: chaseTimeWithoutLoss
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -1275,6 +1315,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
+    - target: {fileID: 346151396623904002, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 346151396623904002, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655265980554250922, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
     - target: {fileID: 1655265980554250922, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
       propertyPath: hintText
       value: 
@@ -1282,7 +1334,7 @@ PrefabInstance:
     - target: {fileID: 1655265980554250922, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 7274921750840045711, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -47.30645
@@ -1526,6 +1578,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
+      propertyPath: chaseTimeWithoutLoss
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -1631,9 +1687,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
     - target: {fileID: 137184309694899341, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 137184309694899341, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 1316821408789168846, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -76.99474
@@ -1678,6 +1738,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Env_CompanyBuilding_03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8842835157362390964, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842835157362390964, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1691,10 +1759,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
+    - target: {fileID: 8122289536684230007, guid: 5c06f3174e1062d44b9caa19b044b217, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122289536684230007, guid: 5c06f3174e1062d44b9caa19b044b217, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8585650954766913903, guid: 5c06f3174e1062d44b9caa19b044b217, type: 3}
       propertyPath: m_Name
       value: Env_CommercialBuilding_02
       objectReference: {fileID: 0}
+    - target: {fileID: 8867286864447410263, guid: 5c06f3174e1062d44b9caa19b044b217, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
     - target: {fileID: 8867286864447410263, guid: 5c06f3174e1062d44b9caa19b044b217, type: 3}
       propertyPath: hintText
       value: 
@@ -1702,7 +1782,7 @@ PrefabInstance:
     - target: {fileID: 8867286864447410263, guid: 5c06f3174e1062d44b9caa19b044b217, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 8965977058007075797, guid: 5c06f3174e1062d44b9caa19b044b217, type: 3}
       propertyPath: m_LocalPosition.x
       value: -49.16645
@@ -2090,6 +2170,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
+      propertyPath: chaseTimeWithoutLoss
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -2271,9 +2355,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5042908254544397990, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 5042908254544397990, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
+    - target: {fileID: 9180952678749999643, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180952678749999643, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2583,13 +2679,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5042908254544397990, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 5042908254544397990, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
       propertyPath: hintText
       value: 
       objectReference: {fileID: 2074244995}
     - target: {fileID: 5042908254544397990, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
+    - target: {fileID: 9180952678749999643, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180952678749999643, guid: 47589020b1f8f044082bb38c7f20a651, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3198,6 +3306,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4512347695357816385, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512347695357816385, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363389498051025545, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
     - target: {fileID: 6363389498051025545, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
       propertyPath: hintText
       value: 
@@ -3205,7 +3325,7 @@ PrefabInstance:
     - target: {fileID: 6363389498051025545, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3634,13 +3754,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
     - target: {fileID: 137184309694899341, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 137184309694899341, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
       propertyPath: hintText
       value: 
       objectReference: {fileID: 2074244995}
     - target: {fileID: 137184309694899341, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 1316821408789168846, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -64.96495
@@ -3684,6 +3808,14 @@ PrefabInstance:
     - target: {fileID: 1805269126570203252, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
       propertyPath: m_Name
       value: Env_CompanyBuilding_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842835157362390964, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842835157362390964, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3833,6 +3965,10 @@ PrefabInstance:
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
+      propertyPath: chaseTimeWithoutLoss
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -4532,10 +4668,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4512347695357816385, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512347695357816385, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363389498051025545, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
     - target: {fileID: 6363389498051025545, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4555,13 +4703,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
     - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
       propertyPath: hintText
       value: 
       objectReference: {fileID: 2074244995}
     - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 366980482748411765, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
       propertyPath: m_Name
       value: Env_CompanyBuilding_04 (1)
@@ -4604,6 +4756,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1034726627151984079, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588752750302943577, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588752750302943577, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: m_ProvidesContacts
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4860,6 +5020,10 @@ PrefabInstance:
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
+      propertyPath: chaseTimeWithoutLoss
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -5183,9 +5347,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
     - target: {fileID: 383193498019127022, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 383193498019127022, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 2496671267302702964, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
       propertyPath: m_LocalPosition.x
       value: -105.16644
@@ -5229,6 +5397,14 @@ PrefabInstance:
     - target: {fileID: 3021394072774387150, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
       propertyPath: m_Name
       value: Env_Motel_05 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207403660560150765, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207403660560150765, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5985,6 +6161,7 @@ RectTransform:
   - {fileID: 1929906898}
   - {fileID: 785278100}
   - {fileID: 1544572046}
+  - {fileID: 1923804939}
   m_Father: {fileID: 58756595}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7176,6 +7353,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
+    - target: {fileID: 2148330731133648331, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148330731133648331, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908776275951532597, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
     - target: {fileID: 2908776275951532597, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
       propertyPath: hintText
       value: 
@@ -7183,7 +7372,7 @@ PrefabInstance:
     - target: {fileID: 2908776275951532597, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 7372888656906956857, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -119.33
@@ -8347,13 +8536,25 @@ PrefabInstance:
       value: Env_ResidentBuilding_06 (2)
       objectReference: {fileID: 0}
     - target: {fileID: 5720640824622815596, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 5720640824622815596, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
       propertyPath: hintText
       value: 
       objectReference: {fileID: 2074244995}
     - target: {fileID: 5720640824622815596, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
+    - target: {fileID: 6459052184465725974, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6459052184465725974, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8412,9 +8613,21 @@ PrefabInstance:
       value: Env_ResidentBuilding_06 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5720640824622815596, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 5720640824622815596, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
+    - target: {fileID: 6459052184465725974, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6459052184465725974, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8844,10 +9057,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4512347695357816385, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512347695357816385, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363389498051025545, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
     - target: {fileID: 6363389498051025545, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8866,10 +9091,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
+    - target: {fileID: 346151396623904002, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 346151396623904002, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655265980554250922, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
     - target: {fileID: 1655265980554250922, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 7274921750840045711, guid: 22b01b1920e109543b7a1ef76356924e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -54.30645
@@ -10262,9 +10499,21 @@ PrefabInstance:
       value: Env_ResidentBuilding_06 (3)
       objectReference: {fileID: 0}
     - target: {fileID: 5720640824622815596, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 5720640824622815596, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
+    - target: {fileID: 6459052184465725974, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6459052184465725974, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10760,6 +11009,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
+      propertyPath: chaseTimeWithoutLoss
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -10945,9 +11198,21 @@ PrefabInstance:
       value: Env_ResidentBuilding_06
       objectReference: {fileID: 0}
     - target: {fileID: 5720640824622815596, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 5720640824622815596, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
+    - target: {fileID: 6459052184465725974, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6459052184465725974, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11754,13 +12019,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
     - target: {fileID: 4245454663992477395, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 4245454663992477395, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
       propertyPath: hintText
       value: 
       objectReference: {fileID: 2074244995}
     - target: {fileID: 4245454663992477395, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
+    - target: {fileID: 5173890759039201920, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173890759039201920, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8576294685000717922, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
       propertyPath: m_Name
       value: Env_CompanyBuilding_01 (1)
@@ -11824,9 +12101,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
     - target: {fileID: 4245454663992477395, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 4245454663992477395, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
+    - target: {fileID: 5173890759039201920, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173890759039201920, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8576294685000717922, guid: 3a0092e896feaf341bbe0cc0e30b0bbe, type: 3}
       propertyPath: m_Name
       value: Env_CompanyBuilding_01
@@ -12123,6 +12412,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
+    - target: {fileID: 26805867650592037, guid: 0972cd229ac9d20489bbc3a57a51be46, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26805867650592037, guid: 0972cd229ac9d20489bbc3a57a51be46, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2661994169556932180, guid: 0972cd229ac9d20489bbc3a57a51be46, type: 3}
       propertyPath: m_Name
       value: Env_ResidentBuilding_05 (1)
@@ -12168,13 +12465,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6109357788966674982, guid: 0972cd229ac9d20489bbc3a57a51be46, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 6109357788966674982, guid: 0972cd229ac9d20489bbc3a57a51be46, type: 3}
       propertyPath: hintText
       value: 
       objectReference: {fileID: 2074244995}
     - target: {fileID: 6109357788966674982, guid: 0972cd229ac9d20489bbc3a57a51be46, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12307,13 +12608,17 @@ PrefabInstance:
       value: Env_CommercialBuilding_03
       objectReference: {fileID: 0}
     - target: {fileID: 5116815132946520858, guid: 459bf6bc825ea9845822408053e0b7aa, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 5116815132946520858, guid: 459bf6bc825ea9845822408053e0b7aa, type: 3}
       propertyPath: hintText
       value: 
       objectReference: {fileID: 2074244995}
     - target: {fileID: 5116815132946520858, guid: 459bf6bc825ea9845822408053e0b7aa, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12328,9 +12633,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
     - target: {fileID: 137184309694899341, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 137184309694899341, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 1316821408789168846, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -91.896454
@@ -12374,6 +12683,14 @@ PrefabInstance:
     - target: {fileID: 1805269126570203252, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
       propertyPath: m_Name
       value: Env_CompanyBuilding_03 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842835157362390964, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842835157362390964, guid: cab431cd2a680084693f2afc089d81fa, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12650,6 +12967,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
+      propertyPath: chaseTimeWithoutLoss
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -12765,6 +13086,10 @@ PrefabInstance:
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
+      propertyPath: chaseTimeWithoutLoss
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -13026,9 +13351,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
     - target: {fileID: 383193498019127022, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 383193498019127022, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 2496671267302702964, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
       propertyPath: m_LocalPosition.x
       value: -105.15645
@@ -13072,6 +13401,14 @@ PrefabInstance:
     - target: {fileID: 3021394072774387150, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
       propertyPath: m_Name
       value: Env_Motel_05 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207403660560150765, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207403660560150765, guid: f9be95d7f56731f4b97c4011e28edaab, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13224,10 +13561,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
+    - target: {fileID: 2148330731133648331, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148330731133648331, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908776275951532597, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
     - target: {fileID: 2908776275951532597, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 7372888656906956857, guid: 5154c08efe2be6a44bc4d1ff6a11317e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -86.50416
@@ -13427,10 +13776,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4512347695357816385, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512347695357816385, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363389498051025545, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
     - target: {fileID: 6363389498051025545, guid: b846e66566f20394ea5e77dbedbed858, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13561,6 +13922,141 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1923804938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1923804939}
+  - component: {fileID: 1923804940}
+  - component: {fileID: 1923804941}
+  m_Layer: 5
+  m_Name: "\u0420\u0456\u0432\u0435\u043D\u044C \u0420\u043E\u0437\u0448\u0443\u043A\u0443"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1923804939
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923804938}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 713140553}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 850, y: -500}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1923804940
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923804938}
+  m_CullTransparentMesh: 1
+--- !u!114 &1923804941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923804938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "\u0420\u0456\u0432\u0435\u043D\u044C \u0440\u043E\u0437\u0448\u0443\u043A\u0443:
+    0"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: 2194
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -179.77216, y: -12.3132, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1929906897
 GameObject:
   m_ObjectHideFlags: 0
@@ -13696,6 +14192,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
+      propertyPath: chaseTimeWithoutLoss
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -13780,6 +14280,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4977004248514900161, guid: 73a9ae2f4eead034a9aa210b6ca9fe2b, type: 3}
   m_PrefabInstance: {fileID: 1802254406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1946045932 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6030292002590682158, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+  m_PrefabInstance: {fileID: 2010313008}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1952473810 stripped
 Transform:
@@ -13946,6 +14451,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
+      propertyPath: chaseTimeWithoutLoss
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549403669386841046, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -14051,13 +14560,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
     - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
       propertyPath: hintText
       value: 
       objectReference: {fileID: 2074244995}
     - target: {fileID: -390692109170687648, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 366980482748411765, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
       propertyPath: m_Name
       value: Env_CompanyBuilding_04
@@ -14100,6 +14613,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1034726627151984079, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588752750302943577, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588752750302943577, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: m_ProvidesContacts
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -14386,6 +14907,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3950862548465279965, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4438001650733646468, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
       propertyPath: m_Name
       value: Room1
@@ -14431,7 +14956,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4812829583696416237, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebfd67b949a3a3c4782c43a5aae5abba, type: 3}
@@ -14719,9 +15245,21 @@ PrefabInstance:
       value: Env_ResidentBuilding_06 (4)
       objectReference: {fileID: 0}
     - target: {fileID: 5720640824622815596, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 5720640824622815596, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
+    - target: {fileID: 6459052184465725974, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6459052184465725974, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14745,6 +15283,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1998587214}
     m_Modifications:
+    - target: {fileID: 1869878419489288883, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869878419489288883, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7046241242767255820, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -53.02645
@@ -14786,13 +15332,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7635953613025256054, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491979289}
+    - target: {fileID: 7635953613025256054, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
       propertyPath: hintText
       value: 
       objectReference: {fileID: 2074244995}
     - target: {fileID: 7635953613025256054, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
       propertyPath: roomSpawnPoint
       value: 
-      objectReference: {fileID: 1509884467}
+      objectReference: {fileID: 1946045932}
     - target: {fileID: 7674863563708117942, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
       propertyPath: m_Name
       value: Env_ResidentBuilding_04
@@ -15171,6 +15721,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 405308525460100222, guid: 7dd5d0a31822d934189a3f311aa61869, type: 3}
+      propertyPath: wantedLevelText
+      value: 
+      objectReference: {fileID: 1923804941}
     - target: {fileID: 587218204522490160, guid: 7dd5d0a31822d934189a3f311aa61869, type: 3}
       propertyPath: m_LocalPosition.x
       value: 51.24
