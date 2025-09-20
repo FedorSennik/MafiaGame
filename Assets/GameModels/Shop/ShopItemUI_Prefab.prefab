@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -138,9 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 0}
   itemNameText: {fileID: 7856370038385146483}
-  itemPriceText: {fileID: 0}
   itemIconImage: {fileID: 1970944294015745111}
-  buyButton: {fileID: 0}
   selectButton: {fileID: 579070277747258878}
 --- !u!114 &8057344287465496365
 MonoBehaviour:
