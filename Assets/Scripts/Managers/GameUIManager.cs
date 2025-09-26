@@ -46,22 +46,19 @@ public class GameUIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        managerUIPanels.Add(pauseMenuPanel);
+        managerUIPanels.Add(settingsPanel);
+        managerUIPanels.Add(keybindsPanel);
+        managerUIPanels.Add(shopPanel);
     }
 
     void Start()
     {
-        if (pauseMenuPanel != null) managerUIPanels.Add(pauseMenuPanel);
-        if (settingsPanel != null) managerUIPanels.Add(settingsPanel);
-        if (keybindsPanel != null) managerUIPanels.Add(keybindsPanel);
-        if (shopPanel != null) managerUIPanels.Add(shopPanel);
-
-        foreach (GameObject panel in managerUIPanels)
-        {
-            if (panel != null) panel.SetActive(false);
-        }
-
-        SetGameUIAndPlayerControlActive(true);
-        UpdateCursorState();
+        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
+        if (keybindsPanel != null) keybindsPanel.SetActive(false);
+        if (shopPanel != null) shopPanel.SetActive(false);
     }
 
     void Update()
@@ -71,46 +68,33 @@ public class GameUIManager : MonoBehaviour
             TogglePauseMenu();
         }
 
-        if (Input.GetKeyDown(toggleShopKey))
+        if (Input.GetKeyDown(toggleShopKey) && !pauseMenuPanel.activeSelf && !settingsPanel.activeSelf && !keybindsPanel.activeSelf)
         {
             ToggleShop();
         }
 
-        UpdateCursorState();
+        UpdateInGameHUDVisibility();
     }
 
-    public void SetGameUIAndPlayerControlActive(bool active)
+    private void SetGameUIAndPlayerControlActive(bool isActive)
     {
-        foreach (GameObject hudElement in inGameHudElements)
+        Time.timeScale = isActive ? 1f : 0f;
+
+        if (playerMovementScript != null) playerMovementScript.enabled = isActive;
+        if (gunFireScript != null) gunFireScript.enabled = isActive;
+
+    }
+
+    private void UpdateInGameHUDVisibility()
+    {
+        bool isAnyPanelActive = AnyManagerUIPanelActive;
+
+        foreach (var hudElement in inGameHudElements)
         {
             if (hudElement != null)
             {
-                hudElement.SetActive(active);
+                hudElement.SetActive(!isAnyPanelActive);
             }
-        }
-
-        if (playerMovementScript != null)
-        {
-            playerMovementScript.enabled = active;
-        }
-
-        if (gunFireScript != null)
-        {
-            gunFireScript.enabled = active;
-        }
-    }
-
-    private void UpdateCursorState()
-    {
-        if (AnyManagerUIPanelActive)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
         }
     }
 
@@ -118,47 +102,66 @@ public class GameUIManager : MonoBehaviour
     {
         if (pauseMenuPanel == null) return;
 
-        bool isMenuOpen = pauseMenuPanel.activeSelf;
-        pauseMenuPanel.SetActive(!isMenuOpen);
+        if (settingsPanel != null && settingsPanel.activeSelf) CloseSettingsPanel();
+        if (keybindsPanel != null && keybindsPanel.activeSelf) CloseKeybindsPanel();
+        if (shopPanel != null && shopPanel.activeSelf) ToggleShop();
 
-        if (settingsPanel != null) settingsPanel.SetActive(false);
+
+        bool isPaused = pauseMenuPanel.activeSelf;
+        pauseMenuPanel.SetActive(!isPaused);
+        SetGameUIAndPlayerControlActive(isPaused);
+
+        if (pauseMenuPanel.activeSelf)
+        {
+            Debug.Log("Гра призупинена.");
+        }
+        else
+        {
+            Debug.Log("Гра відновлена.");
+        }
+    }
+
+    public void ResumeGame()
+    {
+        if (pauseMenuPanel == null) return;
+
+        if (pauseMenuPanel.activeSelf)
+        {
+            pauseMenuPanel.SetActive(false);
+            SetGameUIAndPlayerControlActive(true);
+            Debug.Log("Гра відновлена (кнопка).");
+        }
+    }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void OpenSettingsPanel()
+    {
+        if (settingsPanel == null) return;
+
+        settingsPanel.SetActive(true);
+        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
         if (keybindsPanel != null) keybindsPanel.SetActive(false);
         if (shopPanel != null) shopPanel.SetActive(false);
 
-        SetGameUIAndPlayerControlActive(!pauseMenuPanel.activeSelf);
+        SetGameUIAndPlayerControlActive(false);
     }
 
-    public void StartGame()
+    public void CloseSettingsPanel()
     {
-        Debug.Log("Завантаження сцени меню...");
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenuScene");
-    }
+        if (settingsPanel == null) return;
 
-    public void OpenSettings()
-    {
-        if (pauseMenuPanel != null)
-        {
-            pauseMenuPanel.SetActive(false);
-        }
-        if (settingsPanel != null)
-        {
-            settingsPanel.SetActive(true);
-        }
-        Debug.Log("Відкрито Налаштування в меню.");
-    }
+        settingsPanel.SetActive(false);
+        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(true);
 
-    public void CloseSettings()
-    {
-        if (settingsPanel != null)
+        if (!AnyManagerUIPanelActive)
         {
-            settingsPanel.SetActive(false);
+            SetGameUIAndPlayerControlActive(true);
         }
-        if (pauseMenuPanel != null)
-        {
-            pauseMenuPanel.SetActive(true);
-        }
-        Debug.Log("Закрито Налаштування. Повернуто до Головного меню.");
     }
 
     public void OpenKeybindsPanel()
@@ -207,11 +210,5 @@ public class GameUIManager : MonoBehaviour
         {
             ShopManager.Instance.CloseShop();
         }
-    }
-
-    public void QuitGame()
-    {
-        Debug.Log("Вихід з гри...");
-        Application.Quit();
     }
 }

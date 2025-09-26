@@ -31,6 +31,19 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        if (playerTransform == null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerTransform = player.transform;
+            }
+            else
+            {
+                Debug.LogError("GameManager: Об'єкт гравця з тегом 'Player' не знайдено!");
+            }
+        }
+
         UpdateMoneyUI();
     }
 
@@ -52,17 +65,22 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Недостатньо грошей! Потрібно: {price}$, є: {playerMoney}$");
+            Debug.LogWarning($"Недостатньо грошей для покупки {itemToSpawnPrefab.name}. Потрібно: {price}$, є: {playerMoney}$");
             return false;
         }
     }
 
-    // Метод для спавну предмета
     public void SpawnItem(GameObject itemPrefab)
     {
         if (playerTransform == null)
         {
-            Debug.LogError("Player Transform не призначено в GameManager! Неможливо спавнити предмет.");
+            Debug.LogError("GameManager: PlayerTransform не призначено. Неможливо заспавнити предмет.");
+            return;
+        }
+
+        if (itemPrefab == null)
+        {
+            Debug.LogError("GameManager: ItemPrefab is null. Неможливо заспавнити предмет.");
             return;
         }
 
@@ -99,14 +117,11 @@ public class GameManager : MonoBehaviour
         if (playerMoneyText != null)
         {
             playerMoneyText.text = $"{playerMoney}$";
+
             if (ShopManager.Instance != null)
             {
                 ShopManager.Instance.UpdateItemDetailsUI(ShopManager.Instance.currentSelectedItemButton);
             }
-        }
-        else
-        {
-            Debug.LogWarning("Player Money Text (TextMeshProUGUI) не призначено в GameManager!");
         }
     }
 }

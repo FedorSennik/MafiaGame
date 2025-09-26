@@ -20,9 +20,6 @@ public class ShopManager : MonoBehaviour
     public TextMeshProUGUI selectedItemPriceText;
     public Button buyButtonDetails;
 
-    [Header("Categories")]
-    public Transform categoryButtonsParent;
-    public GameObject categoryButtonPrefab;
 
     public List<Item> allShopItems = new List<Item>();
 
@@ -49,109 +46,58 @@ public class ShopManager : MonoBehaviour
         if (selectedItemPriceText == null) Debug.LogError("ShopManager: selectedItemPriceText не призначено!");
         if (buyButtonDetails == null) Debug.LogError("ShopManager: buyButtonDetails не призначено!");
 
-        if (allShopItems == null || allShopItems.Count == 0)
-        {
-            Debug.LogWarning("ShopManager: Список 'All Shop Items' (Item ScriptableObjects) порожній. Магазин не буде відображати предмети.");
-        }
-
-        GenerateShopItemsUI(null);
-        SetupCategoryButtons();
-
         if (buyButtonDetails != null)
         {
             buyButtonDetails.onClick.RemoveAllListeners();
-            buyButtonDetails.onClick.AddListener(OnBuyButtonDetailsClicked);
+            buyButtonDetails.onClick.AddListener(TryBuyCurrentItem);
         }
 
-        UpdateItemDetailsUI(null);
+        if (allShopItems.Count == 0)
+        {
+            LoadAllItems();
+        }
     }
 
-    public void GenerateShopItemsUI(string categoryFilter)
+    void LoadAllItems()
     {
-        Debug.Log($"ShopManager: Генеруємо UI для предметів. Фільтр: '{categoryFilter}'. Всього Item ScriptableObjects: {allShopItems.Count}");
+        if (allShopItems.Count == 0)
+        {
+            Debug.LogWarning("ShopManager: Список allShopItems порожній. Магазин не буде відображати предмети.");
+        }
+    }
 
+    public void GenerateShopItemsUI()
+    {
         foreach (Transform child in itemListContentParent)
         {
             Destroy(child.gameObject);
         }
 
-        List<Item> filteredItems = new List<Item>();
-
-        if (string.IsNullOrEmpty(categoryFilter) || categoryFilter == "All")
+        foreach (Item item in allShopItems)
         {
-            filteredItems = allShopItems;
-            Debug.Log($"ShopManager: Фільтр 'All' або порожній. Всього предметів для відображення: {filteredItems.Count}");
-        }
-        else
-        {
-            filteredItems = allShopItems
-                .Where(item => item != null && item.itemTag == categoryFilter)
-                .ToList();
-            Debug.Log($"ShopManager: Фільтр за категорією '{categoryFilter}'. Знайдено предметів: {filteredItems.Count}");
-        }
+            if (item == null) continue;
 
-        if (filteredItems.Count == 0)
-        {
-            Debug.LogWarning("ShopManager: Немає предметів для відображення після фільтрації.");
-        }
+            GameObject uiItem = Instantiate(shopItemUIPrefab, itemListContentParent);
+            ItemButton itemButton = uiItem.GetComponent<ItemButton>();
 
-        foreach (Item itemData in filteredItems)
-        {
-            if (itemData == null)
-            {
-                Debug.LogWarning("ShopManager: Item ScriptableObject в списку 'allShopItems' є null. Пропущено.");
-                continue;
-            }
-            if (itemData.spawnablePrefab == null)
-            {
-                Debug.LogWarning($"ShopManager: 'Spawnable Prefab' не призначено для Item ScriptableObject '{itemData.itemName}'. Цей предмет не може бути куплений.");
-                continue;
-            }
-
-            GameObject itemUI = Instantiate(shopItemUIPrefab, itemListContentParent);
-            ItemButton itemButton = itemUI.GetComponent<ItemButton>();
             if (itemButton != null)
             {
-                itemButton.Initialize(itemData);
-                Debug.Log($"ShopManager: Створено UI елемент для '{itemData.itemName}'.");
+                itemButton.Initialize(item);
             }
             else
             {
-                Debug.LogError($"ShopManager: Prefab '{shopItemUIPrefab.name}' не має компонента ItemButton. UI елемент не буде функціонувати.");
+                Debug.LogError($"ShopManager: Prefab '{shopItemUIPrefab.name}' не містить компонента ItemButton.");
             }
         }
-        UpdateItemDetailsUI(null);
-    }
 
-    void SetupCategoryButtons()
-    {
-        if (categoryButtonsParent != null)
+        ItemButton firstItem = itemListContentParent.GetComponentInChildren<ItemButton>();
+        if (firstItem != null)
         {
-            foreach (Transform child in categoryButtonsParent)
-            {
-                Button btn = child.GetComponent<Button>();
-                TextMeshProUGUI btnText = child.GetComponentInChildren<TextMeshProUGUI>();
-                if (btn != null && btnText != null)
-                {
-                    string categoryName = btnText.text;
-                    string trimmedCategoryName = categoryName.Trim();
-
-                    btn.onClick.RemoveAllListeners();
-                    if (trimmedCategoryName == "All")
-                    {
-                        btn.onClick.AddListener(() => GenerateShopItemsUI(null));
-                    }
-                    else
-                    {
-                        btn.onClick.AddListener(() => GenerateShopItemsUI(trimmedCategoryName));
-                    }
-                    Debug.Log($"ShopManager: Налаштовано кнопку категорії '{trimmedCategoryName}'.");
-                }
-            }
+            SelectItemForDetails(firstItem);
         }
         else
         {
-            Debug.LogWarning("ShopManager: categoryButtonsParent не призначено. Кнопки категорій не будуть налаштовані.");
+            UpdateItemDetailsUI(null);
         }
     }
 
@@ -163,55 +109,47 @@ public class ShopManager : MonoBehaviour
 
     public void UpdateItemDetailsUI(ItemButton itemButton)
     {
-        if (itemButton == null || itemButton.itemData == null)
+        if (itemButton != null && itemButton.itemData != null)
         {
-            if (selectedItemNameText != null) selectedItemNameText.text = "Назва Предмета";
-            if (selectedItemImage != null)
-            {
-                selectedItemImage.sprite = null;
-                selectedItemImage.enabled = false;
-            }
-            if (selectedItemInfoText != null) selectedItemInfoText.text = "Інформація про предмет...";
-            if (selectedItemPriceText != null) selectedItemPriceText.text = "";
-            if (buyButtonDetails != null) buyButtonDetails.interactable = false;
-            return;
-        }
+            selectedItemNameText.text = itemButton.itemData.itemName;
+            selectedItemImage.sprite = itemButton.itemData.itemIcon;
+            selectedItemImage.enabled = itemButton.itemData.itemIcon != null;
+            selectedItemInfoText.text = itemButton.itemData.itemDescription;
+            selectedItemPriceText.text = $"{itemButton.itemData.itemPrice}$";
+            buyButtonDetails.interactable = true;
 
-        if (selectedItemNameText != null) selectedItemNameText.text = itemButton.itemData.itemName;
-        if (selectedItemImage != null)
-        {
-            if (itemButton.itemData.itemIcon != null)
+            foreach (Transform child in itemListContentParent)
             {
-                selectedItemImage.sprite = itemButton.itemData.itemIcon;
-                selectedItemImage.enabled = true;
-            }
-            else
-            {
-                selectedItemImage.sprite = null;
-                selectedItemImage.enabled = false;
-                Debug.LogWarning($"ShopManager: Icon sprite is null for '{itemButton.itemData.itemName}'. Hiding image in details panel.");
+                child.GetComponent<Image>().color = (child.GetComponent<ItemButton>() == itemButton) ? Color.yellow : Color.white;
             }
         }
-        if (selectedItemInfoText != null) selectedItemInfoText.text = itemButton.itemData.itemDescription;
-
-        if (selectedItemPriceText != null) selectedItemPriceText.text = itemButton.itemData.itemPrice.ToString() + "$";
-
-        if (buyButtonDetails != null)
+        else
         {
-            buyButtonDetails.interactable = GameManager.Instance != null && GameManager.Instance.playerMoney >= itemButton.itemData.itemPrice;
+            selectedItemNameText.text = "Виберіть предмет";
+            selectedItemImage.enabled = false;
+            selectedItemInfoText.text = "Інформація про предмет";
+            selectedItemPriceText.text = "---$";
+            buyButtonDetails.interactable = false;
+            currentSelectedItemButton = null;
+
+            foreach (Transform child in itemListContentParent)
+            {
+                child.GetComponent<Image>().color = Color.white;
+            }
         }
     }
 
-    public void OnBuyButtonDetailsClicked()
+    public void TryBuyCurrentItem()
     {
         if (currentSelectedItemButton != null && currentSelectedItemButton.itemData != null)
         {
-            if (GameManager.Instance != null && currentSelectedItemButton.itemData.spawnablePrefab != null)
+            if (GameManager.Instance != null && PlayerStats.Instance != null && currentSelectedItemButton.itemData.spawnablePrefab != null)
             {
                 if (GameManager.Instance.TryPurchaseItem(currentSelectedItemButton.itemData.itemPrice, currentSelectedItemButton.itemData.spawnablePrefab))
                 {
                     Debug.Log($"Куплено {currentSelectedItemButton.itemData.itemName} за {currentSelectedItemButton.itemData.itemPrice}$!");
                     UpdateItemDetailsUI(currentSelectedItemButton);
+                    PlayerStats.Instance.UpdateUI();
                 }
                 else
                 {
@@ -220,7 +158,7 @@ public class ShopManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("ShopManager: GameManager.Instance або spawnablePrefab від вибраного предмета null. Неможливо здійснити покупку.");
+                Debug.LogError("ShopManager: PlayerStats.Instance або spawnablePrefab від вибраного предмета null. Неможливо здійснити покупку.");
             }
         }
         else
@@ -235,8 +173,8 @@ public class ShopManager : MonoBehaviour
         {
             shopPanel.SetActive(true);
             Debug.Log("Магазин відкрито.");
-            GameManager.Instance?.UpdateMoneyUI();
-            GenerateShopItemsUI(null);
+            PlayerStats.Instance?.UpdateUI();
+            GenerateShopItemsUI();
             UpdateItemDetailsUI(null);
         }
     }
